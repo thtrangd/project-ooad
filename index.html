@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bot Cinema</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hero-container">
+    <section class="header">
+      <nav>
+        <a href="index.html"><img src="images/logo.png" alt="Bot Cinema Logo" /></a>
+        <div class="nav-links">
+          <ul>
+            <li><a href="movies.html">MOVIES</a></li>
+            <li><a href="special-offers.html">SPECIAL OFFERS</a></li>
+            <li><a href="#">SERVICES</a></li>
+            <li><a href="#">EVENTS</a></li>
+            <li><a href="#" class="sign-in">SIGN IN</a></li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+    <section class="home swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/home1.jpg" alt="Slide 1" />
+          <div class="home-text">
+            <span>Marvel Universe</span>
+            <h1>Guardians of the Galaxy <br /> Volume</h1>
+            <a href="#" class="btn">Book Now</a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="images/home2.jpg" alt="Slide 2" />
+          <div class="home-text">
+            <span>DC World</span>
+            <h1>The Flash <br /> Returns</h1>
+            <a href="#" class="btn">Book Now</a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="images/home3.jpg" alt="Slide 3" />
+          <div class="home-text">
+            <span>Animation</span>
+            <h1>Inside Out 2 <br /> Coming Soon</h1>
+            <a href="#" class="btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </section>
+
+    <section class="booking-steps">
+      <div class="step">
+        <label for="movie">1. Chọn Phim</label>
+        <select id="movie">
+          <option>-- Chọn phim --</option>
+          <option>Guardians of the Galaxy</option>
+          <option>The Flash</option>
+          <option>Inside Out 2</option>
+        </select>
+      </div>
+      <div class="step">
+        <label for="cinema">2. Chọn Rạp</label>
+        <select id="cinema">
+          <option>-- Chọn rạp --</option>
+          <option>Bot Cinema Quận 1</option>
+          <option>Bot Cinema Thủ Đức</option>
+        </select>
+      </div>
+      <div class="step">
+        <label for="date">3. Chọn Ngày</label>
+        <input type="date" id="date" />
+      </div>
+      <div class="step">
+        <label for="time">4. Chọn Suất</label>
+        <select id="time">
+          <option>-- Chọn suất chiếu --</option>
+          <option>10:00</option>
+          <option>14:00</option>
+          <option>18:30</option>
+          <option>21:00</option>
+        </select>
+      </div>
+      <button class="btn book-btn">Mua Vé Nhanh</button>
+    </section>
+
+    <section class="movies-container">
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image1.jpg" alt="Mưa Lửa" />
+        </div>
+        <h3>Mưa Lửa - Anh Trai Vượt Ngàn Chông Gai</h3>
+        <span>Galaxy Cinema</span>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image2.jpg" alt="Thám Tử Kiên" />
+        </div>
+        <h3>Thám Tử Kiên: Kỳ Án Không Đầu</h3>
+        <span>Đang chiếu</span>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image3.jpg" alt="Until Dawn" />
+        </div>
+        <h3>Until Dawn: Bí Mật Kinh Hoàng</h3>
+        <span>18:00 ngày 15.05</span>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image4.jpg" alt="Lật Mặt 8" />
+        </div>
+        <h3>Lật Mặt 8: Vòng Tay Nắng</h3>
+        <span>Khởi chiếu 27.04.2025</span>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image5.jpg" alt="Gravity" />
+        </div>
+        <h3>Cuộc chiến không trọng lực</h3>
+        <span>Đang chiếu</span>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image6.jpg" alt="Thunderbolts" />
+        </div>
+        <h3>Biệt Đội Sấm Sét</h3>
+        <span>Đang chiếu</span>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image7.jpg" alt="Tội Đồ" />
+        </div>
+        <h3>Tội Đồ</h3>
+        <span>Đang chiếu</span>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image8.jpg" alt="Rocco và Những Người Anh Em" />
+        </div>
+        <h3>Rocco và Những Người Anh Em</h3>
+        <span>Đang chiếu</span>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image9.jpg" alt="Yadang: Ba Mặt Lật Kèo" />
+        </div>
+        <h3>Yadang: Ba Mặt Lật Kè</h3>
+        <span>Đang chiếu</span>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image11.jpg" alt="Quái Thú Đại Náo Sở Thú" />
+        </div>
+        <h3>Quái Thú Đại Náo Sở Thú</h3>
+        <span>Đang chiếu</span>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image11.jpg" alt="Holy Night: Đội Săn Quỷ" />
+        </div>
+        <h3>Holy Night: Đội Săn Quỷ</h3>
+        <span>Đang chiếu</span>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image12.jpg" alt="Phim Shin Cậu Bé Bút Chì: Bí Ẩn! Học Viện Hoa Lệ Tenkasu" />
+        </div>
+        <h3>Phim Shin Cậu Bé Bút Chì: Bí Ẩn! Học Viện Hoa Lệ Tenkasu</h3>
+        <span>Đang chiếu</span>
+      </div>
+
+      <div class="box">
+        <div class="box-img">
+          <img src="images/image13.jpg" alt="Địa Đạo: Mặt Trời Trong Bóng Tối" />
+        </div>
+        <h3>Địa Đạo: Mặt Trời Trong Bóng Tối</h3>
+        <span>Đang chiếu</span>
+      </div>
+
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Marmelad", sans-serif;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: none;
+}
+
+.hero-container {
+  width: 100vw;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(243, 217, 191, 0.7), rgba(42, 21, 1, 0.7)),
+    url(images/banner.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 20px 0 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  padding: 0 40px;
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav img {
+  width: 200px;
+}
+
+.nav-links {
+  flex: 1;
+  text-align: center;
+}
+
+.nav-links ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links ul li {
+  list-style: none;
+}
+
+.nav-links ul li a {
+  color: #3b1f05;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 8px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-links ul li a:hover {
+  color: #b28c58;
+}
+
+.nav-links ul li a.sign-in {
+  background-color: #3b1f05;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links ul li a.sign-in:hover {
+  background-color: #b28c58;
+}
+
+.home {
+  width: 90%;
+  height: 50vh;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 0;
+  background: transparent;
+}
+
+.swiper-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+.home-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.home-text span {
+  font-size: 20px;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.home-text h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 12px 30px;
+  background: #3b1f05;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #b28c58;
+}
+
+.booking-steps {
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.step label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #3b1f05;
+}
+
+.step select,
+.step input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.book-btn {
+  background: #3b1f05;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 24px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.book-btn:hover {
+  background: #b28c58;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+}
+
+.swiper-pagination-bullet {
+  background: #fff;
+}
+
+.movies-container {
+  max-width: 968px;
+  width: 90%;
+  margin: 2rem auto 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  background: transparent;
+  padding: 0 10px;
+}
+
+.box {
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding-bottom: 1rem;
+}
+
+.box .box-img {
+  width: 100%;
+  height: 270px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.box .box-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.box .box-img:hover img {
+  transform: scale(1.05);
+}
+
+.box h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.box span {
+  font-size: 0.875rem;
+  color: #777;
+}
+
+.movies-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
