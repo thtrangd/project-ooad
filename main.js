@@ -14,3 +14,21 @@ const swiper = new Swiper(".swiper", {
   },
 });
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("benefitsBtn");
+    const dropdown = btn.parentElement;
+
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      dropdown.classList.toggle("open");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("open");
+      }
+    });
+  });
+
+  
+

@@ -4,33 +4,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Danh Sách Phim - Bot Cinema</title>
-  <link rel="stylesheet" href="style.css" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <section class="header">
-    <nav>
-      <a href="index.html"><img src="images/logo.png" alt="Bot Cinema Logo" /></a>
-      <div class="nav-links">
-        <ul>
-          <li><a href="movies.html" class="active">MOVIES</a></li>
-          <li><a href="#">SPECIAL OFFERS</a></li>
-          <li><a href="#">SERVICES</a></li>
-          <li><a href="#">EVENTS</a></li>
-          <li><a href="#" class="sign-in">SIGN IN</a></li>
-        </ul>
-      </div>
-    </nav>
-  </section>
-
   <div class="hero-container">
-    <main style="padding: 20px; max-width: 1200px; margin: auto;">
+    <section class="header">
+      <nav>
+        <a href="index.html"><img src="images/logo.png" alt="Bot Cinema Logo" /></a>
+        <div class="nav-links">
+          <ul>
+            <li><a href="movies.html">PHIM</a></li>
+            <li><a href="special-offers.html">ƯU ĐÃI</a></li>
+            <li><a href="services.html">DỊCH VỤ</a></li>
+<li class="dropdown-hover">
+  <a href="javascript:void(0);">QUYỀN LỢI</a>
+  <ul class="dropdown-menu">
+    <li><a href="the-le.html">THỂ LỆ</a></li>
+    <li><a href="benefits.html">QUYỀN LỢI</a></li>
+    <li><a href="huong-dan.html">HƯỚNG DẪN</a></li>
+  </ul>
+</li>
+
+          </ul>
+        </div>
+        <div class="sign-in">
+          <a href="signin.html" class="btn">Sign In</a>
+        </div>
+      </nav>
+    </section>
+
+<div class="hero-container">
+  <main style="padding: 20px; max-width: 1200px; margin: auto;">
       <h1>Danh Sách Phim</h1>
 
     <section id="now-playing">
-      <h2>Phim Đang Chiếu</h2>
+<h2 class="section-title">Phim Đang Chiếu</h2>
       <div class="movies-list">
       <div class="box">
         <div class="box-img">
@@ -139,9 +152,8 @@
     </section>
 
     <section id="coming-soon" style="margin-top: 40px;">
-      <h2>Phim Sắp Chiếu</h2>
+<h2 class="section-title">Phim Sắp Chiếu</h2>
       <div class="movies-list">
-<div class="movies-list">
   <div class="box">
     <div class="box-img">
       <img src="images/image14.jpg" alt="Lilo & Stitch" />
