@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chi tiết phim - Bot Cinema</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: 'Marmelad', sans-serif;
+      color: #3b1f05;
+      min-height: 100vh;
+      background-image: linear-gradient(rgba(243, 217, 191, 0.7), rgba(42, 21, 1, 0.85)), url('images/banner.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .movie-detail-container {
+      background-color: #fff9ec;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    #back-btn {
+      background-color: #3b1f05;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    #back-btn:hover {
+      background-color: #b55c00;
+    }
+
+    #movie-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #b55c00;
+      margin-bottom: 30px;
+    }
+
+    .movie-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 30px;
+      margin-bottom: 30px;
+      justify-content: center;
+    }
+
+    #movie-image {
+      width: 200px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(181, 92, 0, 0.25);
+    }
+
+    .movie-info {
+      flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .movie-info p {
+      margin: 6px 0;
+    }
+
+    h2 {
+      color: #b55c00;
+      margin-top: 20px;
+    }
+
+    #movie-description {
+      font-size: 1.1rem;
+      line-height: 1.65;
+      text-align: justify;
+      margin-bottom: 30px;
+    }
+
+    .trailer-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #movie-trailer {
+      width: 100%;
+      max-width: 720px;
+      height: 405px;
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 0 15px rgba(181, 92, 0, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="movie-detail-container">
+    <button id="back-btn">← Quay lại</button>
+
+    <h1 id="movie-title"></h1>
+
+    <div class="movie-header">
+      <img id="movie-image" src="" alt="Ảnh phim" />
+      <div class="movie-info">
+        <p><strong>Thời lượng:</strong> <span id="movie-duration"></span> phút</p>
+        <p><strong>Khởi chiếu:</strong> <span id="movie-date"></span></p>
+        <p><strong>Quốc gia:</strong> <span id="movie-country"></span></p>
+        <p><strong>Nhà sản xuất:</strong> <span id="movie-producer"></span></p>
+        <p><strong>Đạo diễn:</strong> <span id="movie-director"></span></p>
+        <p><strong>Diễn viên:</strong> <span id="movie-cast"></span></p>
+        <p><strong>Thể loại:</strong> <span id="movie-genre"></span></p>
+      </div>
+    </div>
+
+    <h2>Nội dung phim</h2>
+    <p id="movie-description"></p>
+
+    <h2>Trailer</h2>
+    <div class="trailer-container">
+      <iframe
+        id="movie-trailer"
+        allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      ></iframe>
+    </div>
+  </div>
+
+  <script src="movie-data.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const movieId = urlParams.get('id');
+    const movie = movies.find(m => m.id === movieId);
+
+    if (movie) {
+      document.getElementById('movie-title').textContent = movie.title;
+      document.getElementById('movie-image').src = movie.image;
+      document.getElementById('movie-image').alt = movie.title;
+      document.getElementById('movie-duration').textContent = movie.duration;
+      document.getElementById('movie-date').textContent = movie.date;
+      document.getElementById('movie-country').textContent = movie.country;
+      document.getElementById('movie-producer').textContent = movie.producer;
+      document.getElementById('movie-director').textContent = movie.director;
+      document.getElementById('movie-cast').textContent = movie.cast;
+      document.getElementById('movie-genre').textContent = movie.genre;
+      document.getElementById('movie-description').textContent = movie.description || 'Chưa có mô tả phim.';
+      document.getElementById('movie-trailer').src = movie.trailer || '';
+    } else {
+      document.querySelector('.movie-detail-container').innerHTML = '<p>Phim không tồn tại.</p>';
+    }
+
+    document.getElementById('back-btn').onclick = () => {
+      window.history.back();
+    };
+  </script>
+
+</body>
+</html>

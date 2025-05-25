@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Đặt Vé Nhanh - Bot Cinema</title>
+</head>
+<body>
+
+  <h1>Đặt Vé Nhanh</h1>
+
+  <form id="quick-booking-form">
+    <label for="movie-select">Chọn phim:</label>
+    <select id="movie-select" required>
+      <option value="">-- Chọn phim --</option>
+    </select>
+
+    <label for="cinema-select">Chọn rạp:</label>
+    <select id="cinema-select" required>
+      <option value="">-- Chọn rạp --</option>
+    </select>
+
+    <label for="date-select">Chọn ngày:</label>
+    <input type="date" id="date-select" required min="" />
+
+    <label for="showtime-select">Chọn suất chiếu:</label>
+    <select id="showtime-select" required>
+      <option value="">-- Chọn suất chiếu --</option>
+    </select>
+
+    <button type="submit">Đặt vé</button>
+  </form>
+
+  <script>
+    // Dữ liệu phim và rạp
+    const movies = [
+      {
+        id: "0",
+        title: "Mưa Lửa - Anh Trai Vượt Ngàn Chông Gai",
+        date: "2025-05-20",
+        showtimes: ["09:00", "12:30", "16:00", "19:30"]
+      },
+      {
+        id: "1",
+        title: "Thám Tử Kiên: Kỳ Án Không Đầu",
+        date: "2025-05-12",
+        showtimes: ["10:00", "14:00", "18:00", "21:00"]
+      }
+    ];
+
+    const cinemas = ["Rạp Galaxy", "Rạp BHD"];
+
+    const movieSelect = document.getElementById("movie-select");
+    const cinemaSelect = document.getElementById("cinema-select");
+    const dateSelect = document.getElementById("date-select");
+    const showtimeSelect = document.getElementById("showtime-select");
+
+    function loadMovies() {
+      movies.forEach(m => {
+        const option = document.createElement("option");
+        option.value = m.id;
+        option.textContent = m.title;
+        movieSelect.appendChild(option);
+      });
+    }
+
+    function loadCinemas() {
+      cinemas.forEach(c => {
+        const option = document.createElement("option");
+        option.value = c;
+        option.textContent = c;
+        cinemaSelect.appendChild(option);
+      });
+    }
+
+    function setMinDate() {
+      const today = new Date().toISOString().split('T')[0];
+      dateSelect.min = today;
+    }
+
+    movieSelect.addEventListener("change", () => {
+      showtimeSelect.innerHTML = '<option value="">-- Chọn suất chiếu --</option>';
+
+      const selectedMovie = movies.find(m => m.id === movieSelect.value);
+      if (selectedMovie) {
+        selectedMovie.showtimes.forEach(time => {
+          const option = document.createElement("option");
+          option.value = time;
+          option.textContent = time;
+          showtimeSelect.appendChild(option);
+        });
+
+        dateSelect.min = selectedMovie.date > new Date().toISOString().split('T')[0]
+          ? selectedMovie.date
+          : new Date().toISOString().split('T')[0];
+      }
+    });
+
+    document.getElementById("quick-booking-form").addEventListener("submit", e => {
+      e.preventDefault();
+
+      const movieId = movieSelect.value;
+      const cinema = cinemaSelect.value;
+      const date = dateSelect.value;
+      const time = showtimeSelect.value;
+
+      if (!movieId || !cinema || !date || !time) {
+        alert("Vui lòng chọn đầy đủ thông tin.");
+        return;
+      }
+
+      const movie = movies.find(m => m.id === movieId);
+
+      alert(`Bạn đã đặt vé:\nPhim: ${movie.title}\nRạp: ${cinema}\nNgày: ${date}\nSuất chiếu: ${time}`);
+    });
+
+    loadMovies();
+    loadCinemas();
+    setMinDate();
+  </script>
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bot Cinema</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -10,9 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div class="hero-container">
     <section class="header">
@@ -23,20 +23,18 @@
             <li><a href="movies.html">PHIM</a></li>
             <li><a href="special-offers.html">ƯU ĐÃI</a></li>
             <li><a href="services.html">DỊCH VỤ</a></li>
-<li class="dropdown-hover">
-  <a href="javascript:void(0);">QUYỀN LỢI</a>
-  <ul class="dropdown-menu">
-    <li><a href="the-le.html">THỂ LỆ</a></li>
-    <li><a href="benefits.html">QUYỀN LỢI</a></li>
-    <li><a href="huong-dan.html">HƯỚNG DẪN</a></li>
-  </ul>
-</li>
-
-
+            <li class="dropdown-hover">
+              <a href="javascript:void(0);">QUYỀN LỢI</a>
+              <ul class="dropdown-menu">
+                <li><a href="the-le.html">THỂ LỆ</a></li>
+                <li><a href="benefits.html">QUYỀN LỢI</a></li>
+                <li><a href="huong-dan.html">HƯỚNG DẪN</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
         <div class="sign-in">
-          <a href="signin.html" class="btn">Sign In</a>
+          <button class="btn" id="open-signin">Sign In</button>
         </div>
       </nav>
     </section>
@@ -109,116 +107,66 @@
       <button class="btn book-btn">Mua Vé Nhanh</button>
     </section>
 
-    <section class="movies-container">
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image1.jpg" alt="Mưa Lửa" />
-        </div>
-        <h3>Mưa Lửa - Anh Trai Vượt Ngàn Chông Gai</h3>
-        <span>Galaxy Cinema</span>
-      </div>
+    <!-- Thêm phần chứa danh sách phim -->
+    <section class="movies-container"></section>
 
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image2.jpg" alt="Thám Tử Kiên" />
-        </div>
-        <h3>Thám Tử Kiên: Kỳ Án Không Đầu</h3>
-        <span>Đang chiếu</span>
-      </div>
-
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image3.jpg" alt="Until Dawn" />
-        </div>
-        <h3>Until Dawn: Bí Mật Kinh Hoàng</h3>
-        <span>18:00 ngày 15.05</span>
-      </div>
-
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image4.jpg" alt="Lật Mặt 8" />
-        </div>
-        <h3>Lật Mặt 8: Vòng Tay Nắng</h3>
-        <span>Khởi chiếu 27.04.2025</span>
-      </div>
-
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image5.jpg" alt="Gravity" />
-        </div>
-        <h3>Cuộc chiến không trọng lực</h3>
-        <span>Đang chiếu</span>
-      </div>
-
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image6.jpg" alt="Thunderbolts" />
-        </div>
-        <h3>Biệt Đội Sấm Sét</h3>
-        <span>Đang chiếu</span>
-      </div>
-
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image7.jpg" alt="Tội Đồ" />
-        </div>
-        <h3>Tội Đồ</h3>
-        <span>Đang chiếu</span>
-      </div>
-
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image8.jpg" alt="Rocco và Những Người Anh Em" />
-        </div>
-        <h3>Rocco và Những Người Anh Em</h3>
-        <span>Đang chiếu</span>
-      </div>
-
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image9.jpg" alt="Yadang: Ba Mặt Lật Kèo" />
-        </div>
-        <h3>Yadang: Ba Mặt Lật Kè</h3>
-        <span>Đang chiếu</span>
-      </div>
-
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image11.jpg" alt="Quái Thú Đại Náo Sở Thú" />
-        </div>
-        <h3>Quái Thú Đại Náo Sở Thú</h3>
-        <span>Đang chiếu</span>
-      </div>
-
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image11.jpg" alt="Holy Night: Đội Săn Quỷ" />
-        </div>
-        <h3>Holy Night: Đội Săn Quỷ</h3>
-        <span>Đang chiếu</span>
-      </div>
-
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image12.jpg" alt="Phim Shin Cậu Bé Bút Chì: Bí Ẩn! Học Viện Hoa Lệ Tenkasu" />
-        </div>
-        <h3>Phim Shin Cậu Bé Bút Chì: Bí Ẩn! Học Viện Hoa Lệ Tenkasu</h3>
-        <span>Đang chiếu</span>
-      </div>
-
-      <div class="box">
-        <div class="box-img">
-          <img src="images/image13.jpg" alt="Địa Đạo: Mặt Trời Trong Bóng Tối" />
-        </div>
-        <h3>Địa Đạo: Mặt Trời Trong Bóng Tối</h3>
-        <span>Đang chiếu</span>
-      </div>
-
-    </section>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <div id="signin-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <img src="images/login.png" alt="Login illustration" class="login-img" />
+      <h2>Đăng Nhập Tài Khoản</h2>
+      <form>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Nhập Email" required />
 
+        <label for="password">Mật khẩu</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" placeholder="Nhập Mật khẩu" required />
+          <span class="toggle-password">👁️</span>
+        </div>
+
+        <button type="submit" class="btn-primary">ĐĂNG NHẬP</button>
+
+        <div class="form-links">
+          <a href="#">Quên mật khẩu?</a>
+        </div>
+
+        <hr />
+
+        <div class="form-footer">
+          <p>Bạn chưa có tài khoản?</p>
+          <button type="button" class="btn-outline">Đăng ký</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Load dữ liệu phim -->
+  <script src="movie-data.js"></script>
+
+  <!-- Tạo danh sách phim -->
+  <script>
+    const container = document.querySelector(".movies-container");
+
+    movies.forEach(movie => {
+      const box = document.createElement("div");
+      box.className = "box";
+      box.innerHTML = `
+        <a href="movie-detail.html?id=${movie.id}" class="movie-link">
+          <div class="box-img">
+            <img src="${movie.image}" alt="${movie.title}" />
+          </div>
+          <h3>${movie.title}</h3>
+          <span>${movie.subtitle}</span>
+        </a>
+      `;
+      container.appendChild(box);
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
