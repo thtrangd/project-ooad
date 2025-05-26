@@ -32,7 +32,6 @@
   </form>
 
   <script>
-    // Dữ liệu phim và rạp
     const movies = [
       {
         id: "0",
@@ -80,7 +79,6 @@
 
     movieSelect.addEventListener("change", () => {
       showtimeSelect.innerHTML = '<option value="">-- Chọn suất chiếu --</option>';
-
       const selectedMovie = movies.find(m => m.id === movieSelect.value);
       if (selectedMovie) {
         selectedMovie.showtimes.forEach(time => {
@@ -90,15 +88,13 @@
           showtimeSelect.appendChild(option);
         });
 
-        dateSelect.min = selectedMovie.date > new Date().toISOString().split('T')[0]
-          ? selectedMovie.date
-          : new Date().toISOString().split('T')[0];
+        const today = new Date().toISOString().split('T')[0];
+        dateSelect.min = selectedMovie.date > today ? selectedMovie.date : today;
       }
     });
 
     document.getElementById("quick-booking-form").addEventListener("submit", e => {
       e.preventDefault();
-
       const movieId = movieSelect.value;
       const cinema = cinemaSelect.value;
       const date = dateSelect.value;
@@ -110,7 +106,6 @@
       }
 
       const movie = movies.find(m => m.id === movieId);
-
       alert(`Bạn đã đặt vé:\nPhim: ${movie.title}\nRạp: ${cinema}\nNgày: ${date}\nSuất chiếu: ${time}`);
     });
 

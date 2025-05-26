@@ -1,3 +1,7 @@
+const movieSelect = document.getElementById("movie");
+const cinemaSelect = document.getElementById("cinema");
+const timeSelect = document.getElementById("time");
+
 const movies = [
   {
     id: "0",
@@ -197,3 +201,50 @@ const movies = [
 ];
 
 const cinemas = ["Rạp Galaxy", "Rạp BHD", "Rạp Lotte Cinema", "Rạp CGV"];
+movies.forEach(movie => {
+  const option = document.createElement("option");
+  option.value = movie.id;
+  option.textContent = movie.title;
+  movieSelect.appendChild(option);
+});
+
+// Khi chọn phim thì load rạp
+movieSelect.addEventListener("change", () => {
+  const selectedMovieId = movieSelect.value;
+  cinemaSelect.innerHTML = '<option value="">-- Chọn rạp --</option>';
+  timeSelect.innerHTML = '<option value="">-- Chọn suất chiếu --</option>';
+  cinemaSelect.disabled = false;
+  timeSelect.disabled = true;
+
+  if (selectedMovieId === "") {
+    cinemaSelect.disabled = true;
+    return;
+  }
+
+  cinemas.forEach(cinema => {
+    const option = document.createElement("option");
+    option.value = cinema;
+    option.textContent = cinema;
+    cinemaSelect.appendChild(option);
+  });
+});
+
+// Khi chọn rạp thì load suất chiếu (tuỳ theo phim)
+cinemaSelect.addEventListener("change", () => {
+  const selectedMovieId = movieSelect.value;
+  const selectedMovie = movies.find(movie => movie.id === selectedMovieId);
+
+  timeSelect.innerHTML = '<option value="">-- Chọn suất chiếu --</option>';
+  timeSelect.disabled = true;
+
+  if (cinemaSelect.value === "" || !selectedMovie) return;
+
+  selectedMovie.showtimes.forEach(time => {
+    const option = document.createElement("option");
+    option.value = time;
+    option.textContent = time;
+    timeSelect.appendChild(option);
+  });
+
+  timeSelect.disabled = false;
+});

@@ -22,7 +22,13 @@
           <ul>
             <li><a href="movies.html">PHIM</a></li>
             <li><a href="special-offers.html">ƯU ĐÃI</a></li>
-            <li><a href="services.html">DỊCH VỤ</a></li>
+<li class="dropdown-hover">
+  <a href="javascript:void(0);">SẢN PHẨM</a>
+  <ul class="dropdown-menu">
+    <li><a href="atvncg.html">ANH TRAI VƯỢT NGÀN CHÔNG GAI</a></li>
+    <li><a href="merch.html">GALAXY MERCH</a></li>
+  </ul>
+</li>
             <li class="dropdown-hover">
               <a href="javascript:void(0);">QUYỀN LỢI</a>
               <ul class="dropdown-menu">
@@ -76,40 +82,22 @@
       <div class="step">
         <label for="movie">1. Chọn Phim</label>
         <select id="movie">
-          <option>-- Chọn phim --</option>
-          <option>Guardians of the Galaxy</option>
-          <option>The Flash</option>
-          <option>Inside Out 2</option>
+          <option value="">-- Chọn phim --</option>
+        </select>
+
+        <select id="cinema" disabled>
+          <option value="">-- Chọn rạp --</option>
+        </select>
+
+        <select id="time" disabled>
+          <option value="">-- Chọn suất chiếu --</option>
         </select>
       </div>
-      <div class="step">
-        <label for="cinema">2. Chọn Rạp</label>
-        <select id="cinema">
-          <option>-- Chọn rạp --</option>
-          <option>Bot Cinema Quận 1</option>
-          <option>Bot Cinema Thủ Đức</option>
-        </select>
-      </div>
-      <div class="step">
-        <label for="date">3. Chọn Ngày</label>
-        <input type="date" id="date" />
-      </div>
-      <div class="step">
-        <label for="time">4. Chọn Suất</label>
-        <select id="time">
-          <option>-- Chọn suất chiếu --</option>
-          <option>10:00</option>
-          <option>14:00</option>
-          <option>18:30</option>
-          <option>21:00</option>
-        </select>
-      </div>
+
       <button class="btn book-btn">Mua Vé Nhanh</button>
     </section>
 
-    <!-- Thêm phần chứa danh sách phim -->
     <section class="movies-container"></section>
-
   </div>
 
   <div id="signin-modal" class="modal">
@@ -146,7 +134,7 @@
   <!-- Load dữ liệu phim -->
   <script src="movie-data.js"></script>
 
-  <!-- Tạo danh sách phim -->
+  <!-- Hiển thị danh sách phim -->
   <script>
     const container = document.querySelector(".movies-container");
 
@@ -165,6 +153,76 @@
       container.appendChild(box);
     });
   </script>
+
+  <!-- Tự động load danh sách phim + rạp + suất chiếu -->
+  <script>
+    const movieSelect = document.getElementById("movie");
+    const cinemaSelect = document.getElementById("cinema");
+    const timeSelect = document.getElementById("time");
+
+    function loadMovies() {
+      movies.forEach(movie => {
+        const option = document.createElement("option");
+        option.value = movie.id;
+        option.textContent = movie.title;
+        movieSelect.appendChild(option);
+      });
+    }
+
+    movieSelect.addEventListener("change", () => {
+      const selectedMovieId = parseInt(movieSelect.value);
+      cinemaSelect.innerHTML = '<option value="">-- Chọn rạp --</option>';
+      timeSelect.innerHTML = '<option value="">-- Chọn suất chiếu --</option>';
+      timeSelect.disabled = true;
+
+      if (!selectedMovieId) {
+        cinemaSelect.disabled = true;
+        return;
+      }
+
+      const selectedMovie = movies.find(m => m.id === selectedMovieId);
+
+      selectedMovie.cinemas.forEach(cinema => {
+        const option = document.createElement("option");
+        option.value = cinema.name;
+        option.textContent = cinema.name;
+        cinemaSelect.appendChild(option);
+      });
+
+      cinemaSelect.disabled = false;
+    });
+
+    cinemaSelect.addEventListener("change", () => {
+      const selectedMovieId = parseInt(movieSelect.value);
+      const selectedCinemaName = cinemaSelect.value;
+      timeSelect.innerHTML = '<option value="">-- Chọn suất chiếu --</option>';
+
+      if (!selectedCinemaName) {
+        timeSelect.disabled = true;
+        return;
+      }
+
+      const selectedMovie = movies.find(m => m.id === selectedMovieId);
+      const selectedCinema = selectedMovie.cinemas.find(c => c.name === selectedCinemaName);
+
+      selectedCinema.times.forEach(time => {
+        const option = document.createElement("option");
+        option.value = time;
+        option.textContent = time;
+        timeSelect.appendChild(option);
+      });
+
+      timeSelect.disabled = false;
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      loadMovies();
+      cinemaSelect.disabled = true;
+      timeSelect.disabled = true;
+    });
+  </script>
+
+  
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="main.js"></script>

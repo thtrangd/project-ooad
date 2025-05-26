@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galaxy Merch | Bot Cinema</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet" />
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Merch grid styles -->
+  <style>
+    .merch-container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .merch-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #fff;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+.product-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
+  color: #000;
+  border: 1px solid #ddd;
+}
+
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+
+    .product-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      color: #ff6600;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .product-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .product-buttons button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .buy-now {
+      background-color: #ff6600;
+      color: white;
+    }
+
+    .add-cart {
+      background-color: white;
+      color: #ff6600;
+      border: 1px solid #ff6600;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-container">
+    <!-- Header -->
+    <section class="header">
+      <nav>
+        <a href="index.html"><img src="images/logo.png" alt="Bot Cinema Logo" /></a>
+        <div class="nav-links">
+          <ul>
+            <li><a href="movies.html">PHIM</a></li>
+            <li><a href="special-offers.html">ƯU ĐÃI</a></li>
+            <li class="dropdown-hover">
+              <a href="javascript:void(0);">SẢN PHẨM</a>
+              <ul class="dropdown-menu">
+                <li><a href="atvncg.html">ANH TRAI VƯỢT NGÀN CHÔNG GAI</a></li>
+                <li><a href="merch.html">GALAXY MERCH</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-hover">
+              <a href="javascript:void(0);">QUYỀN LỢI</a>
+              <ul class="dropdown-menu">
+                <li><a href="the-le.html">THỂ LỆ</a></li>
+                <li><a href="benefits.html">QUYỀN LỢI</a></li>
+                <li><a href="huong-dan.html">HƯỚNG DẪN</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+    <!-- Banner (giống trang index) -->
+    <section class="home swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/home1.jpg" alt="Slide 1" />
+          <div class="home-text">
+            <span>Marvel Universe</span>
+            <h1>Guardians of the Galaxy <br /> Volume</h1>
+            <a href="#" class="btn">Book Now</a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="images/home2.jpg" alt="Slide 2" />
+          <div class="home-text">
+            <span>DC World</span>
+            <h1>The Flash <br /> Returns</h1>
+            <a href="#" class="btn">Book Now</a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="images/home3.jpg" alt="Slide 3" />
+          <div class="home-text">
+            <span>Animation</span>
+            <h1>Inside Out 2 <br /> Coming Soon</h1>
+            <a href="#" class="btn">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </section>
+
+    <!-- Merch Grid -->
+    <div class="merch-container">
+      <h1 class="merch-title">Galaxy Merch</h1>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="images/merch1.jpg" alt="Ly nước Capybara">
+          <div class="product-title">Ly nước Capybara</div>
+          <div class="product-price">350.000 ₫</div>
+          <div class="product-buttons">
+            <button class="buy-now">Mua ngay</button>
+            <button class="add-cart">Thêm vào giỏ</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/merch2.jpg" alt="Ống hút Marvel">
+          <div class="product-title">Ống hút Marvel</div>
+          <div class="product-price">120.000 ₫</div>
+          <div class="product-buttons">
+            <button class="buy-now">Mua ngay</button>
+            <button class="add-cart">Thêm vào giỏ</button>
+          </div>
+        </div>
+
+        <!-- Thêm sản phẩm khác tại đây nếu muốn -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

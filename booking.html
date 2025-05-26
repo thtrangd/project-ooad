@@ -152,5 +152,38 @@
       this.reset();
     });
   </script>
+
+   <!-- Modal đăng nhập -->
+  <div id="signin-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <img src="images/login.png" alt="Login illustration" class="login-img" />
+      <h2>Đăng Nhập Tài Khoản</h2>
+      <form>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Nhập Email" required />
+
+        <label for="password">Mật khẩu</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" placeholder="Nhập Mật khẩu" required />
+          <span class="toggle-password">👁️</span>
+        </div>
+
+        <button type="submit" class="btn-primary">ĐĂNG NHẬP</button>
+
+        <div class="form-links">
+          <a href="#">Quên mật khẩu?</a>
+        </div>
+
+        <hr />
+
+        <div class="form-footer">
+          <p>Bạn chưa có tài khoản?</p>
+          <button type="button" class="btn-outline">Đăng ký</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
 </body>
 </html>
