@@ -23,10 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const togglePassBtn = modal.querySelector(".toggle-password");
   const passwordInput = modal.querySelector("#password");
 
-  openBtn.addEventListener("click", () => modal.style.display = "block");
-  closeBtn.addEventListener("click", () => modal.style.display = "none");
+  openBtn.addEventListener("click", () => (modal.style.display = "block"));
+  closeBtn.addEventListener("click", () => (modal.style.display = "none"));
 
-  window.addEventListener("click", e => {
+  window.addEventListener("click", (e) => {
     if (e.target === modal) modal.style.display = "none";
   });
 
@@ -34,9 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
     passwordInput.type = passwordInput.type === "password" ? "text" : "password";
   });
 
-  // Dropdown hover (nếu muốn dropdown click thì cần thay đổi HTML & JS)
+  // Dropdown hover
   const dropdowns = document.querySelectorAll(".dropdown-hover");
-  dropdowns.forEach(dropdown => {
+  dropdowns.forEach((dropdown) => {
     dropdown.addEventListener("mouseenter", () => dropdown.classList.add("open"));
     dropdown.addEventListener("mouseleave", () => dropdown.classList.remove("open"));
   });
@@ -49,23 +49,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const date = document.getElementById("date").value;
     const time = document.getElementById("time").value;
 
-    if (!movie || movie === "-- Chọn phim --" ||
-        !cinema || cinema === "-- Chọn rạp --" ||
-        !date ||
-        !time || time === "-- Chọn suất chiếu --") {
-      alert("Vui lòng chọn đầy đủ thông tin trước khi đặt vé.");
+    const today = new Date().toISOString().split("T")[0];
+
+    if (
+      !movie ||
+      movie === "-- Chọn phim --" ||
+      !cinema ||
+      cinema === "-- Chọn rạp --" ||
+      !date ||
+      date < today ||
+      !time ||
+      time === "-- Chọn suất chiếu --"
+    ) {
+      alert("Vui lòng chọn đầy đủ và đúng thông tin (ngày không được ở quá khứ) trước khi đặt vé.");
       return;
     }
 
-    const query = `?movie=${encodeURIComponent(movie)}&cinema=${encodeURIComponent(cinema)}&date=${date}&time=${time}`;
+    const query = `?movie=${encodeURIComponent(movie)}&cinema=${encodeURIComponent(
+      cinema
+    )}&date=${date}&time=${time}`;
     window.location.href = `booking.html${query}`;
   });
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const quickBtn = document.querySelector(".book-btn");
-  if (quickBtn) {
-    quickBtn.addEventListener("click", () => {
-      window.location.href = "booking.html";
-    });
-  }
+
+  // Đặt ngày tối thiểu cho input date ngay từ đầu
+  const dateInput = document.getElementById("date");
+  const today = new Date().toISOString().split("T")[0];
+  dateInput.min = today;
 });

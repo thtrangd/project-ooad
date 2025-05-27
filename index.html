@@ -22,13 +22,13 @@
           <ul>
             <li><a href="movies.html">PHIM</a></li>
             <li><a href="special-offers.html">ƯU ĐÃI</a></li>
-<li class="dropdown-hover">
-  <a href="javascript:void(0);">SẢN PHẨM</a>
-  <ul class="dropdown-menu">
-    <li><a href="atvncg.html">ANH TRAI VƯỢT NGÀN CHÔNG GAI</a></li>
-    <li><a href="merch.html">GALAXY MERCH</a></li>
-  </ul>
-</li>
+            <li class="dropdown-hover">
+              <a href="javascript:void(0);">SẢN PHẨM</a>
+              <ul class="dropdown-menu">
+                <li><a href="atvncg.html">ANH TRAI VƯỢT NGÀN CHÔNG GAI</a></li>
+                <li><a href="merch.html">GALAXY MERCH</a></li>
+              </ul>
+            </li>
             <li class="dropdown-hover">
               <a href="javascript:void(0);">QUYỀN LỢI</a>
               <ul class="dropdown-menu">
@@ -88,6 +88,8 @@
         <select id="cinema" disabled>
           <option value="">-- Chọn rạp --</option>
         </select>
+
+        <input type="date" id="date" style="padding: 8px; border-radius: 5px; border: 1px solid #ccc;" />
 
         <select id="time" disabled>
           <option value="">-- Chọn suất chiếu --</option>
@@ -172,6 +174,7 @@
     const movieSelect = document.getElementById("movie");
     const cinemaSelect = document.getElementById("cinema");
     const timeSelect = document.getElementById("time");
+    const dateInput = document.getElementById("date");
 
     function loadMovies() {
       movies.forEach(movie => {
@@ -187,6 +190,8 @@
       cinemaSelect.innerHTML = '<option value="">-- Chọn rạp --</option>';
       timeSelect.innerHTML = '<option value="">-- Chọn suất chiếu --</option>';
       timeSelect.disabled = true;
+      dateInput.disabled = true;
+      dateInput.value = '';
 
       if (!selectedMovieId) {
         cinemaSelect.disabled = true;
@@ -209,9 +214,11 @@
       const selectedMovieId = parseInt(movieSelect.value);
       const selectedCinemaName = cinemaSelect.value;
       timeSelect.innerHTML = '<option value="">-- Chọn suất chiếu --</option>';
+      timeSelect.disabled = true;
+      dateInput.value = '';
 
       if (!selectedCinemaName) {
-        timeSelect.disabled = true;
+        dateInput.disabled = true;
         return;
       }
 
@@ -226,12 +233,14 @@
       });
 
       timeSelect.disabled = false;
+      dateInput.disabled = false; // Mở khóa chọn ngày khi chọn rạp
     });
 
     window.addEventListener("DOMContentLoaded", () => {
       loadMovies();
       cinemaSelect.disabled = true;
       timeSelect.disabled = true;
+      dateInput.disabled = true;
     });
   </script>
 
