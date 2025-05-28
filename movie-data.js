@@ -1,6 +1,17 @@
 const movieSelect = document.getElementById("movie");
 const cinemaSelect = document.getElementById("cinema");
 const timeSelect = document.getElementById("time");
+const detailsDiv = document.getElementById("movie-details");
+const titleEl = document.getElementById("movie-title");
+const imageEl = document.getElementById("movie-image");
+const durationEl = document.getElementById("movie-duration");
+const dateEl = document.getElementById("movie-date");
+const countryEl = document.getElementById("movie-country");
+const directorEl = document.getElementById("movie-director");
+const castEl = document.getElementById("movie-cast");
+const genreEl = document.getElementById("movie-genre");
+const descEl = document.getElementById("movie-description");
+const trailerEl = document.getElementById("movie-trailer");
 
 const movies = [
   {
@@ -233,6 +244,26 @@ movieSelect.addEventListener("change", () => {
 cinemaSelect.addEventListener("change", () => {
   const selectedMovieId = movieSelect.value;
   const selectedMovie = movies.find(movie => movie.id === selectedMovieId);
+  if (!selectedMovie) {
+  detailsDiv.style.display = "none";
+  cinemaSelect.disabled = true;
+  return;
+}
+
+// Hiển thị thông tin chi tiết phim
+titleEl.textContent = selectedMovie.title;
+imageEl.src = selectedMovie.image;
+durationEl.textContent = selectedMovie.duration;
+dateEl.textContent = selectedMovie.date;
+countryEl.textContent = selectedMovie.country;
+directorEl.textContent = selectedMovie.director;
+castEl.textContent = selectedMovie.cast;
+genreEl.textContent = selectedMovie.genre;
+descEl.textContent = selectedMovie.description;
+trailerEl.src = selectedMovie.trailer;
+
+detailsDiv.style.display = "block";
+
 
   timeSelect.innerHTML = '<option value="">-- Chọn suất chiếu --</option>';
   timeSelect.disabled = true;
