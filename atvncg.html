@@ -94,6 +94,34 @@
 </head>
 
 <body>
+<!-- ICON GIỎ HÀNG (MỚI) -->
+<div id="cart-icon" style="
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  cursor: pointer;
+  background: white;
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+">
+  <img src="images/cart.png" alt="Cart" width="30" height="30" />
+</div>
+
+
+<!-- PANEL GIỎ HÀNG -->
+<div id="cart-panel" style="display: none; position: fixed; top: 70px; right: 20px; width: 320px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.4); padding: 20px; z-index: 9999;">
+  <h3>🛒 Giỏ hàng</h3>
+  <div id="cart-items-preview"></div>
+  <p><strong>Tổng tiền:</strong> <span id="cart-total-preview">0 ₫</span></p>
+  <hr />
+  <div id="user-info-preview" style="font-size: 0.9rem;"></div>
+  <div style="text-align: right; margin-top: 10px;">
+    <a href="cart.html" style="text-decoration: none; color: white; background: #b55c00; padding: 8px 12px; border-radius: 6px;">Xem giỏ hàng</a>
+  </div>
+</div>
+
   <div class="hero-container">
     <!-- HEADER -->
     <section class="header">
@@ -203,5 +231,78 @@
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="main.js"></script>
+
+  <!-- Chuyển tới panel Mua ngay -->
+<script>
+  document.querySelectorAll(".buy-now").forEach((button) => {
+    button.addEventListener("click", function () {
+      const card = this.closest(".product-card");
+      const img = card.querySelector("img").getAttribute("src");
+      const name = card.querySelector(".product-title").textContent;
+      const price = card.querySelector(".product-price").textContent;
+
+      const url = `atvncg-booking.html?image=${encodeURIComponent(img)}&name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}`;
+      window.location.href = url;
+    });
+  });
+</script>
+
+<!-- Chuyển tới cart -->
+<script>
+  document.querySelectorAll(".add-cart").forEach((button) => {
+    button.addEventListener("click", function () {
+      const card = this.closest(".product-card");
+      const img = card.querySelector("img").getAttribute("src");
+      const name = card.querySelector(".product-title").textContent;
+      const price = card.querySelector(".product-price").textContent;
+
+      const url = `cart.html?image=${encodeURIComponent(img)}&name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}`;
+      window.location.href = url;
+    });
+  });
+</script>
+
+<!-- Function cho icon cart -->
+<script>
+  const cartIcon = document.getElementById("cart-icon");
+  const cartPanel = document.getElementById("cart-panel");
+  const cartItemsPreview = document.getElementById("cart-items-preview");
+  const cartTotalPreview = document.getElementById("cart-total-preview");
+  const userInfoPreview = document.getElementById("user-info-preview");
+
+  cartIcon.addEventListener("click", () => {
+    if (cartPanel.style.display === "none") {
+      showCartPanel();
+    } else {
+      cartPanel.style.display = "none";
+    }
+  });
+
+  function showCartPanel() {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cartItemsPreview.innerHTML = "";
+    let total = 0;
+    cart.forEach(item => {
+      cartItemsPreview.innerHTML += `
+        <div style="margin-bottom: 8px;">
+          <strong>${item.name}</strong><br />
+          <span style="color:#ff6600">${item.price}</span>
+        </div>`;
+      total += parseInt(item.price.replace(/[^\d]/g, ""));
+    });
+    cartTotalPreview.textContent = `${total.toLocaleString()} ₫`;
+
+    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
+    userInfoPreview.innerHTML = userInfo.fullname ? `
+      <p><strong>👤 ${userInfo.fullname}</strong><br />
+      📧 ${userInfo.email}<br />
+      📱 ${userInfo.phone}<br />
+      🏠 ${userInfo.address}</p>` : `<em>Chưa có thông tin người nhận</em>`;
+
+    cartPanel.style.display = "block";
+  }
+</script>
+
+
 </body>
 </html>
