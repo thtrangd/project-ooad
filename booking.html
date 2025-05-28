@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Đặt Vé - Bot Cinema</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet" />
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       font-family: 'Marmelad', sans-serif;
@@ -102,10 +99,10 @@
     <h1>Xác Nhận Đặt Vé</h1>
 
     <div class="booking-summary">
-      <p><strong>🎬 Phim:</strong> <span id="summary-movie"></span></p>
-      <p><strong>🏢 Rạp:</strong> <span id="summary-cinema"></span></p>
-      <p><strong>📅 Ngày:</strong> <span id="summary-date"></span></p>
-      <p><strong>⏰ Suất chiếu:</strong> <span id="summary-time"></span></p>
+      <p><strong>🎬 Phim:</strong> <span id="summary-movie">Đang tải...</span></p>
+      <p><strong>🏢 Rạp:</strong> <span id="summary-cinema">Đang tải...</span></p>
+      <p><strong>📅 Ngày:</strong> <span id="summary-date">Đang tải...</span></p>
+      <p><strong>⏰ Suất chiếu:</strong> <span id="summary-time">Đang tải...</span></p>
     </div>
 
     <form id="confirm-form">
@@ -125,17 +122,20 @@
   </div>
 
   <script>
+    // Lấy thông tin từ URL query string
     const params = new URLSearchParams(window.location.search);
-    const movie = params.get("movie");
-    const cinema = params.get("cinema");
-    const date = params.get("date");
-    const time = params.get("time");
+    const movie = decodeURIComponent(params.get("movie") || ""); // giải mã phim có dấu
+    const cinema = decodeURIComponent(params.get("cinema") || "");
+    const date = decodeURIComponent(params.get("date") || "");
+    const time = decodeURIComponent(params.get("time") || "");
 
+    // Gán vào phần hiển thị
     document.getElementById("summary-movie").textContent = movie || "Không rõ";
     document.getElementById("summary-cinema").textContent = cinema || "Không rõ";
     document.getElementById("summary-date").textContent = date || "Không rõ";
     document.getElementById("summary-time").textContent = time || "Không rõ";
 
+    // Xác nhận đặt vé
     document.getElementById("confirm-form").addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -152,38 +152,5 @@
       this.reset();
     });
   </script>
-
-   <!-- Modal đăng nhập -->
-  <div id="signin-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-button">&times;</span>
-      <img src="images/login.png" alt="Login illustration" class="login-img" />
-      <h2>Đăng Nhập Tài Khoản</h2>
-      <form>
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Nhập Email" required />
-
-        <label for="password">Mật khẩu</label>
-        <div class="password-wrapper">
-          <input type="password" id="password" placeholder="Nhập Mật khẩu" required />
-          <span class="toggle-password">👁️</span>
-        </div>
-
-        <button type="submit" class="btn-primary">ĐĂNG NHẬP</button>
-
-        <div class="form-links">
-          <a href="#">Quên mật khẩu?</a>
-        </div>
-
-        <hr />
-
-        <div class="form-footer">
-          <p>Bạn chưa có tài khoản?</p>
-          <button type="button" class="btn-outline">Đăng ký</button>
-        </div>
-      </form>
-    </div>
-  </div>
-  
 </body>
 </html>
