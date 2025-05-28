@@ -137,7 +137,7 @@
 
       <div class="box">
         <div class="box-img">
-          <img src="images/image12.jpg" alt="Phim Shin Cậu Bé Bút Chì: Bí Ẩn! Học Viện Hoa Lệ Tenkasu" />
+          <img src="images/image12.jpg" alt="Shin Cậu Bé Bút Chì: Bí Ẩn! Học Viện Hoa Lệ Tenkasu" />
         </div>
         <h3>Phim Shin Cậu Bé Bút Chì: Bí Ẩn! Học Viện Hoa Lệ Tenkasu</h3>
         <span>Đang chiếu</span>
@@ -166,7 +166,7 @@
 
   <div class="box">
     <div class="box-img">
-      <img src="images/image15.jpg" alt="Doraemon: Nobita Và Cuộc Phiêu Lưu Vào Thế Giới Trong Tranh" />
+      <img src="images/image15.jpg" alt="Phim Điện Ảnh Doraemon: Nobita Và Cuộc Phiêu Lưu Vào Thế Giới Trong Tranh" />
     </div>
     <h3>Doraemon: Nobita Và Cuộc Phiêu Lưu...</h3>
     <span>Điểm: 9.2</span>
@@ -402,6 +402,35 @@
 
 
   <script src="main.js"></script>
+<script src="movie-data.js"></script>
+
+
+
+<script src="movie-data.js"></script>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const allBoxes = document.querySelectorAll(".box");
+
+    allBoxes.forEach(box => {
+      const img = box.querySelector(".box-img img");
+      if (!img) return;
+
+      const altText = img.getAttribute("alt")?.trim().toLowerCase();
+      const movie = movies.find(m => m.title.trim().toLowerCase() === altText);
+
+      if (movie) {
+        box.style.cursor = "pointer";
+        box.addEventListener("click", () => {
+          window.location.href = `movie-detail.html?id=${movie.id}`;
+        });
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
 

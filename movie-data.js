@@ -1,17 +1,6 @@
 const movieSelect = document.getElementById("movie");
 const cinemaSelect = document.getElementById("cinema");
 const timeSelect = document.getElementById("time");
-const detailsDiv = document.getElementById("movie-details");
-const titleEl = document.getElementById("movie-title");
-const imageEl = document.getElementById("movie-image");
-const durationEl = document.getElementById("movie-duration");
-const dateEl = document.getElementById("movie-date");
-const countryEl = document.getElementById("movie-country");
-const directorEl = document.getElementById("movie-director");
-const castEl = document.getElementById("movie-cast");
-const genreEl = document.getElementById("movie-genre");
-const descEl = document.getElementById("movie-description");
-const trailerEl = document.getElementById("movie-trailer");
 
 const movies = [
   {
@@ -26,7 +15,7 @@ const movies = [
     cast: "Lý Hải, Việt Hương",
     genre: "Hành động, Tâm lý",
     description: "Một cuộc hành trình cảm động của hai anh em vượt qua thử thách.",
-    trailer: "https://www.youtube.com/embed/Z1BCujX3pw8",
+    trailer: "https://www.youtube.com/embed/pXGutUiI7Pw",
     showtimes: ["09:00", "12:30", "16:00", "19:30"]
   },
   {
@@ -41,7 +30,7 @@ const movies = [
     cast: "Hoài Linh, Jun Vũ",
     genre: "Trinh thám, Hài",
     description: "Một vụ án bí ẩn với những tình tiết bất ngờ và hài hước.",
-    trailer: "https://www.youtube.com/embed/Z1BCujX3pw8",
+    trailer: "https://www.youtube.com/embed/9u7btLuIlzk",
     showtimes: ["10:00", "14:00", "18:00", "21:00"]
   },
   {
@@ -55,7 +44,7 @@ const movies = [
     director: "James Wan",
     cast: "Emma Stone, Dylan O'Brien",
     description: "Một nhóm bạn trẻ phát hiện ra bí ẩn kinh hoàng khi đến căn nhà gỗ trên núi.",
-    trailer: "https://www.youtube.com/embed/example3",
+    trailer: "https://www.youtube.com/embed/3z3fpXETgsU",
     genre: "Kinh dị, Giật gân",
     showtimes: ["11:00", "15:00", "19:00"]
   },
@@ -70,7 +59,7 @@ const movies = [
     director: "Lý Hải",
     cast: "Lý Hải, Hứa Minh Đạt, Ốc Thanh Vân",
     description: "Phần tiếp theo đầy kịch tính của chuỗi phim Lật Mặt, với bí mật gia đình và những pha hành động mãn nhãn.",
-    trailer: "https://www.youtube.com/embed/example4",
+    trailer: "https://www.youtube.com/embed/hUlBTt3NyGI?si=080NtRQTCM4R05XX", 
     genre: "Hành động, Gia đình",
     showtimes: ["09:30", "13:30", "17:30", "20:30"]
   },
@@ -85,7 +74,7 @@ const movies = [
     director: "Christopher Nolan",
     cast: "Matt Damon, Natalie Portman",
     description: "Khi loài người chạm tới giới hạn không gian, một cuộc chiến sống còn bùng nổ trong môi trường không trọng lực.",
-    trailer: "https://www.youtube.com/embed/example5",
+    trailer: "https://www.youtube.com/embed/icy37dvSjCs?si=JlfcKNy0X0vuM3XJ",
     genre: "Khoa học viễn tưởng, Hành động",
     showtimes: ["10:00", "14:00", "18:00"]
   },
@@ -100,7 +89,7 @@ const movies = [
     director: "Taika Waititi",
     cast: "Chris Hemsworth, Tessa Thompson",
     description: "Biệt đội siêu anh hùng mới nổi chiến đấu chống lại thế lực hủy diệt từ vũ trụ khác.",
-    trailer: "https://www.youtube.com/embed/example6",
+    trailer: "https://www.youtube.com/embed/AWE9xJ5SL3o?si=jyADEi-t1Hlu-IGc",
     genre: "Siêu anh hùng, Phiêu lưu",
     showtimes: ["09:00", "12:30", "16:30", "20:00"]
   },
@@ -115,7 +104,7 @@ const movies = [
     director: "Hideo Nakata",
     cast: "Takuya Kimura, Erika Toda",
     description: "Một câu chuyện đen tối về sự trừng phạt và cứu rỗi trong một xã hội đầy bí ẩn.",
-    trailer: "https://www.youtube.com/embed/example7",
+    trailer: "https://www.youtube.com/embed/XRwhXsj98KA?si=0JDx_u0ng3x9ckWS",
     genre: "Tâm lý, Tội phạm",
     showtimes: ["10:00", "13:30", "17:00"]
   },
@@ -130,7 +119,7 @@ const movies = [
     director: "Luchino Visconti",
     cast: "Alain Delon, Renato Salvatori",
     description: "Tình thân, tình yêu và sự đấu tranh giữa các anh em trong bối cảnh nước Ý hậu chiến.",
-    trailer: "https://www.youtube.com/embed/example8",
+    trailer: "https://www.youtube.com/embed/SV1MvbhSQgA?si=RLHLIzZIUmAkfuqE",
     genre: "Chính kịch, Xã hội",
     showtimes: ["11:00", "15:00", "19:00"]
   },
@@ -145,7 +134,7 @@ const movies = [
     director: "Bong Joon-ho",
     cast: "Song Kang-ho, Bae Doona",
     description: "Một vụ án ly kỳ đưa ra ánh sáng ba cuộc đời tưởng chừng không liên quan.",
-    trailer: "https://www.youtube.com/embed/example9",
+    trailer: "https://www.youtube.com/embed/pH2izI5S2Kc",
     genre: "Kinh dị, Tâm lý",
     showtimes: ["09:30", "13:00", "17:30"]
   },
@@ -160,7 +149,7 @@ const movies = [
     director: "Pete Docter",
     cast: "Tom Holland, Zendaya",
     description: "Khi các loài vật trong sở thú trở nên siêu trí tuệ, cuộc phiêu lưu hài hước bắt đầu.",
-    trailer: "https://www.youtube.com/embed/example10",
+    trailer: "https://www.youtube.com/embed/IrEin0s_0Ik?si=JbsJz9OKWXwHgU8x",
     genre: "Hoạt hình, Phiêu lưu",
     showtimes: ["10:30", "14:30", "18:30"]
   },
@@ -175,7 +164,7 @@ const movies = [
     director: "Kim Yong-hwa",
     cast: "Ma Dong-seok, Park Bo-young",
     description: "Đêm giáng sinh không yên bình khi đội săn quỷ phát hiện ra một nghi lễ triệu hồi cổ xưa.",
-    trailer: "https://www.youtube.com/embed/example11",
+    trailer: "https://www.youtube.com/embed/Iwg6nQxN51I?si=jMhv1TOd9sVjZ4ek",
     genre: "Hành động, Kinh dị",
     showtimes: ["09:00", "12:30", "16:00", "19:30"]
   },
@@ -190,7 +179,7 @@ const movies = [
     director: "Wataru Takahashi",
     cast: "Shinnosuke Nohara, Kazama",
     description: "Shin và nhóm bạn đối đầu với những thử thách lạ lùng trong một học viện bí ẩn.",
-    trailer: "https://www.youtube.com/embed/example12",
+    trailer: "https://www.youtube.com/embed/x2ik9QiU154?si=JbP09DdpdHFl7N03",
     genre: "Hoạt hình, Hài hước",
     showtimes: ["10:00", "13:00", "16:00"]
   },
@@ -205,10 +194,491 @@ const movies = [
     director: "Victor Vũ",
     cast: "Trấn Thành, Lan Ngọc",
     description: "Phim lấy cảm hứng từ những câu chuyện lịch sử trong hệ thống địa đạo thời chiến.",
-    trailer: "https://www.youtube.com/embed/example13",
+    trailer: "https://www.youtube.com/embed/xh6IDHjvytU?si=8lZbj_2Lke8R897i",
     genre: "Chiến tranh, Lịch sử",
     showtimes: ["09:30", "13:30", "17:30"]
-  }
+  },
+  {
+  id: "13",
+  title: "Lilo & Stitch",
+  image: "images/image14.jpg",
+  duration: 107,
+  date: "2025-05-23",
+  country: "Mỹ",
+  producer: "Walt Díney Pictures",
+  director: "Dean Fleischer Camp",
+  cast: "Maia Kealoha, Billy Magnussen, Zach Galifianakis",
+  description: "Tình bạn giữa cô bé Lilo và sinh vật ngoài hành tinh Stitch đưa tuổi thơ trở lại trong phim mới Lilo & Stitch",
+  trailer: "https://www.youtube.com/embed/A7jw6CZ7sAY",
+  genre: "Action, Comedy",
+  showtimes: ["09:15", "15:00", "21:00"],
+  status: "sapChieu"
+},
+{
+  id: "14",
+  title: "Phim Điện Ảnh Doraemon: Nobita Và Cuộc Phiêu Lưu Vào Thế Giới Trong Tranh",
+  image: "images/image15.jpg",
+  duration: 105,
+  date: "2025-05-23",
+  country: "Nhật Bản",
+  producer: "Shin-Ei Animation",
+  director: "Yukiyo Teramoto",
+  cast: "Mizuta Wasabii, Ogata Megumi, Kakazu Yumi",
+  description: "Cùng nhóm bạn Doraemon trở về châu Âu thế kỉ 13, vào thế giới trong tranh ở phim mới Doraemon The Movie: Nobita's Art World Tales.",
+  trailer: "https://www.youtube.com/embed/CO5SKQ2KLbk?si=G7Hnt0n40iDqsjL9",
+  genre: "Animated",
+  showtimes: ["12:00", "13:00", "14:00"],
+  status: "sapChieu"
+},
+{
+  id: "15",
+  title: "Colorful Stage! Một Miku Không Thể Hát",
+  image: "images/image16.jpg",
+  duration: 0,
+  date: "2025-MM-DD",
+  country: "Nhật Bản",
+  producer: "uk",
+  director: "uk",
+  cast: "uk",
+  description: "A world where Miku cannot sings.",
+  trailer: "https://www.youtube.com/embed/3bD1dfiRMu4?si=848NmCOF6_1MUJ5T",
+  genre: "Animated",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "16",
+  title: "Ma Móc Họng",
+  image: "images/image17.jpg",
+  duration: 98,
+  date: "2025-05-30",
+  country: "Indonesia",
+  producer: "StarVision Plus",
+  director: "Azhar Kinoi Lubis",
+  cast: "Arta Ailani, Adzana Ashel, Endy Arfian",
+  description: "Siêu phẩm mùa xuân tại xứ sở Vạn Đảo với hơn 3 triệu vé bán ra. Câu chuyện kể về chuyến leo núi của nhóm bạn Ita và Maya trong kỳ nghỉ lễ. Vì phạm phải điều kỵ, Ita trở thành con mồi của lũ quỷ trong rừng, chúng thay phiên nhập vào xác cô để khiến linh hồn cô bị giam cầm nơi đây.",
+  trailer: "https://www.youtube.com/embed/YzhGrs8noqY",
+  genre: "Horror",
+  showtimes: ["23:00", "12:15", "22:45"],
+  status: "sapChieu"
+},
+{
+  id: "17",
+  title: "Đôi Mắt Vô Diện",
+  image: "images/image18.jpg",
+  duration: 88,
+  date: "2025-05-24",
+  country: "Pháp",
+  producer: "uk",
+  director: "Georges Franju",
+  cast: "Pierre Brasseur, Alida Valli, Juliette Mayniel",
+  description: "Eyes Without A Face/ Đôi Mắt Vô Diện là bộ phim hay về tay bác sĩ lỡ nhúng chàm vì con gái.",
+  trailer: "https://www.youtube.com/embed/j5h8suk8deg",
+  genre: "Horror, Psycology",
+  showtimes: ["21:30"],
+  status: "sapChieu"
+},
+{
+  id: "18",
+  title: "Nhiệm Vụ: Bất Khả Thi - Nghiệp Báo Cuối Cùng",
+  image: "images/image19.jpg",
+  duration: 169,
+  date: "2025-05-28",
+  country: "Mỹ",
+  producer: "Paramount Pictures, Skydance Media",
+  director: "Christopher McQuarrie",
+  cast: "Tom Cruise, Hayley Atwell, Vanessa Kirby, Ving Rhames, Simon Pegg",
+  description: "Phim mới Mission: Impossible - The Final Reckoning/ Nhiệm Vụ: Bất Khả Thi - Nghiệp Báo Cuối Cùng là phần cuối của loạt phim hành động lừng danh do Tom Cruise thủ vai chính. Ethan Hunt trở lại để đối đầu với đối thủ hùng mạnh nhất - trí thông minh nhân tạo.",
+  trailer: "https://www.youtube.com/embed/XZHBlBNSkKM",
+  genre: "Action",
+  showtimes: ["10:15", "13:30", "16:30", "19:30"],
+  status: "sapChieu"
+},
+{
+  id: "19",
+  title: "Mượn Hồn Đoạt Xác",
+  image: "images/image20.jpg",
+  duration: 103,
+  date: "2025-05-29",
+  country: "Mỹ",
+  producer: "A24",
+  director: "Michael Philippou, Danny Philippou",
+  cast: "Sally Hawkins, Billy Barrat, Sora Wong",
+  description: "Khi chuyển đến sống cùng người mẹ nuôi mới tại một ngôi nhà hẻo lánh, hai anh em vô tình phát hiện một nghi lễ tà ác — thứ không chỉ đe dọa đến sự sống của họ, mà còn hé lộ những bí mật kinh hoàng đã tồn tại từ lâu.",
+  trailer: "https://www.youtube.com/embed/HWOrKVH6gvs",
+  genre: "Horror",
+  showtimes: ["20:00", "20:45", "22:45"],
+  status: "sapChieu"
+},
+{
+  id: "20",
+  title: "Trạng Quỳnh Nhí: Truyền Thuyết Kim Ngưu",
+  image: "images/image21.jpg",
+  duration: 98,
+  date: "2025-06-20",
+  country: "Việt Nam",
+  producer: "uk",
+  director: "Trịnh Lâm Tùng",
+  cast: "uk",
+  description: "Quỳnh và những người bạn phát hiện âm mưu đen tối của thế lực bí ẩn muốn giải thoát Cửu Vỹ Hồ. Với sự giúp đỡ của thần Kim Ngưu, Quỳnh dấn thân vào hành trình bảo vệ nhân gian.",
+  trailer: "https://www.youtube.com/embed/5lDnQ2PAbeI",
+  genre: "Animated",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "21",
+  title: "Dế Mèn: Cuộc Phiêu Lưu Tới Xóm Lầy Lội",
+  image: "images/image22.jpg",
+  duration: 84,
+  date: "2025-05-30",
+  country: "Việt Nam",
+  producer: "uk",
+  director: "Mai Phương",
+  cast: "uk",
+  description: "Bộ phim kể về chuyến phiêu lưu của 2 anh em Dế Mèn – Dế Trũi tại xóm lầy lội. Nơi những nguy hiểm liên tục rình rập trước sự hiếu kỳ của anh em nhà Dế.",
+  trailer: "https://www.youtube.com/embed/kGx4ZIzPRgI",
+  genre: "Animated",
+  showtimes: ["10:15", "12:45", "18:30"],
+  status: "sapChieu"
+},
+{
+  id: "22",
+  title: "Năm Mười",
+  image: "images/image23.jpg",
+  duration: 80,
+  date: "2025-05-30",
+  country: "Việt Nam",
+  producer: "uk",
+  director: "Tấn Hoàng Thông",
+  cast: "Huỳnh Tú Uyên, Trần Vân Anh, Trần Phong",
+  description: "Năm Mười lấy cảm hứng từ trò chơi quen thuộc, kể về một nhóm bạn đi nghỉ dưỡng tại Đà Lạt. Một bí mật kinh hoàng năm xưa được hé lộ khi họ cùng chơi trò Năm Mười.",
+  trailer: "https://www.youtube.com/embed/K4IQK_atcp8",
+  genre: "Horror, Thriller",
+  showtimes: ["19:15", "22:45", "14:15"],
+  status: "sapChieu"
+},
+{
+  id: "23",
+  title: "John Wick: Ballerina",
+  image: "images/image24.jpg",
+  duration: 0,
+  date: "2025-06-06",
+  country: "Mỹ",
+  producer: "Lionsgate",
+  director: "Len Wiseman",
+  cast: "Ana de Armas, Keanu Reeves, Norman Reedus",
+  description: "Theo chân Eve Macarro trên hành trình trả thù cho cái chết của gia đình, dưới sự huấn luyện của tổ chức tội phạm Ruska Roma.",
+  trailer: "https://www.youtube.com/embed/s35jjZBStJM",
+  genre: "Action",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "24",
+  title: "Điệp Quỷ Tân Nương",
+  image: "images/image25.jpg",
+  duration: 101,
+  date: "2025-06-06",
+  country: "Indonesia",
+  producer: "Entelekey Media Indonesia",
+  director: "Paul Agusta",
+  cast: "Morgan Oey, Zulfa Maharani, Jourdy Pranata",
+  description: "Salim và Tasya về nhà tổ để lo tang và chụp ảnh cưới. Họ vô tình đánh thức những linh hồn chết tức tưởi. Tasya quyết tâm khám phá bí mật gia tộc để giải thoát Salim khỏi lời nguyền.",
+  trailer: "https://www.youtube.com/embed/t7wsgH-rN6Q",
+  genre: "Horror",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "25",
+  title: "Dưới Đáy Hồ",
+  image: "images/image26.jpg",
+  duration: 0,
+  date: "2025-06-06",
+  country: "Việt Nam",
+  producer: "Production Q, HK Film",
+  director: "Trần Hữu Tấn",
+  cast: "Karen Nguyễn, Kay Trần, Thanh Duy",
+  description: "Phim kinh dị siêu nhiên lấy cảm hứng từ truyền thuyết Hồ Đá Tử Thần. Tú rơi vào vòng xoáy khi những người cô quen biết trở thành một người khác, dẫn đến cuộc đối đầu với chính bản sao tà ác của mình.",
+  trailer: "https://www.youtube.com/embed/YwhsUOqUOpE",
+  genre: "Horror",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "26",
+  title: "Bộ 5 Siêu Đẳng Cấp",
+  image: "images/image27.jpg",
+  duration: 0,
+  date: "2025-06-13",
+  country: "Hàn Quốc",
+  producer: "Annapurna Films",
+  director: "Kang Hyung Chul",
+  cast: "Yoo Ah In, Oh Jung Se, Ra Mi Ran",
+  description: "words",
+  trailer: "https://www.youtube.com/embed/oElQKuR1yBk",
+  genre: "Comedy, Fiction",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "27",
+  title: "Bí Kíp Luyện Rồng",
+  image: "images/image28.jpg",
+  duration: 0,
+  date: "2025-06-13",
+  country: "Mỹ",
+  producer: "DreamWorks",
+  director: "Dean DeBlois",
+  cast: "Mason Thames, Nico Parker, Gerard Butler",
+  description: "Câu chuyện về một chàng trai trẻ với ước mơ trở thành thợ săn rồng, nhưng định mệnh lại đưa đẩy anh đến tình bạn bất ngờ với một chú rồng.",
+  trailer: "https://www.youtube.com/embed/6lnYqNYj0o8",
+  genre: "Adventure, Action, Comedy",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "28",
+  title: "Elio: Cậu Bé Đến Từ Trái Đất",
+  image: "images/image29.jpg",
+  duration: 0,
+  date: "2025-06-13",
+  country: "Mỹ",
+  producer: "PIXAR, Walt Disney Pictures",
+  director: "Adrian Molina, Madeline Sharafian, Domee Shi",
+  cast: "Yonas Kibreab, Zoe Saldana, Brad Garrett",
+  description: "Elio là một cậu bé đam mê vũ trụ với trí tưởng tượng phong phú. Một hôm, cậu bất ngờ tham gia một cuộc phiêu lưu ngoài vũ trụ để tìm ra con người thật của mình.",
+  trailer: "https://www.youtube.com/embed/rdzfDoJcrxA",
+  genre: "Animated, Adventure, Comedy, Fiction",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "29",
+  title: "Út Lan: Oán Linh Giữ Của",
+  image: "images/image30.jpg",
+  duration: 0,
+  date: "2025-06-20",
+  country: "Việt Nam",
+  producer: "Apia Pictures",
+  director: "Trần Trọng Dần",
+  cast: "Mạc Văn Khoa, Quốc Trường, Phương Thanh",
+  description: "Lan đến giúp việc tại nhà ông Danh và phải đối mặt với hàng loạt hiện tượng kỳ dị và cái chết bí ẩn. Cùng nhà văn Sơn, Lan bắt đầu lật mở bí mật gia tộc kinh hoàng.",
+  trailer: "https://www.youtube.com/embed/BH0RtFAIFQk",
+  genre: "Horror",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "30",
+  title: "28 Năm Sau Tận Thế",
+  image: "images/image31.jpg",
+  duration: 0,
+  date: "2025-06-20",
+  country: "Mỹ",
+  producer: "Columbia Pictures ",
+  director: "uk",
+  cast: "Aaron Taylor-Johnson, Ralph Fiennes, Cillian Murphy",
+  description: "Cơn ác mộng chưa kết thúc. Virus trở lại, kéo theo bóng tối bao trùm nước Anh. Một hành trình sinh tử: cậu bé tìm kiếm bác sĩ để cứu mẹ mình, băng qua vùng đất chết chóc đầy xác sống tiến hóa và những kẻ nguy hiểm ẩn sau gương mặt tử tế. Liệu niềm hy vọng cuối cùng có đủ để cứu họ khỏi vực thẳm tuyệt vọng?",
+  trailer: "https://www.youtube.com/embed/uyKdDzo6rSU",
+  genre: "Action, Horror",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "31",
+  title: "Một Nửa Hoàn Hả",
+  image: "images/image32.jpg",
+  duration: 0,
+  date: "2025-06-20",
+  country: "uk",
+  producer: "uk",
+  director: "uk",
+  cast: "uk",
+  description: "uk",
+  trailer: "link",
+  genre: "uk",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "32",
+  title: " F1® ",
+  image: "images/image33.jpg",
+  duration: 0,
+  date: "2025-06-27",
+  country: "Mỹ",
+  producer: "Apple Studios ",
+  director: "Joseph Kosinski",
+  cast: "Brad Pitt, Simone Ashley, Javier Bardem",
+  description: " F1® kể về Sonny Hayes (Brad Pitt) được mệnh danh là 'Huyền thoại chưa từng được gọi tên' là ngôi sao sáng giá nhất của FORMULA 1 trong những năm 1990 cho đến khi một vụ tai nạn trên đường đua suýt nữa đã kết thúc sự nghiệp của anh.. Ba mươi năm sau, Sonny trở thành một tay đua tự do, cho đến khi người đồng đội cũ của anh, Ruben Cervantes (Javier Bardem), chủ sở hữu một đội đua F1 đang trên bờ vực sụp đổ, tìm đến anh. Ruben thuyết phục Sonny quay lại với F1® để có một cơ hội cuối cùng cứu lấy đội và khẳng định mình là tay đua xuất sắc nhất thế giới. Anh sẽ thi đấu cùng Joshua Pearce (Damson Idris), tay đua tân binh đầy tham vọng của đội, người luôn muốn tạo ra tốc độ của riêng mình. Tuy nhiên, khi động cơ gầm rú, quá khứ của Sonny sẽ đuổi theo anh và anh nhận ra rằng trong F1, người đồng đội chính là đối thủ cạnh tranh lớn nhất—và con đường chuộc lại lỗi lầm không phải là điều có thể đi một mình. ",
+  trailer: " https://www.youtube.com/embed/llrZvUGzUUk ",
+  genre: "Action, Sport",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "33",
+  title: " M3GAN 2.0 ",
+  image: "images/image34.jpg",
+  duration: 0,
+  date: "2025-06-27",
+  country: "Mỹ",
+  producer: "Universal Pictures ",
+  director: "Gerard Johnstone ",
+  cast: ", Jemaine Clemen, Amie Donald, Allison Williams ",
+  description: " M3GAN 2.0 lấy bối cảnh 2 năm sau các sự kiện ở phần 1. Lúc này, Gemma phát hiện công nghệ sản xuất MEGAN đã bị đánh cắp. Kẻ gian đã tạo ra một robot AI khác với chức năng tương tự MEGAN, nhưng được trang bị sức mạnh chiến đấu 'khủng' hơn mang tên Amelia. Để 'đối đầu' với Amelia, Gemma buộc phải 'hồi sinh' và cải tiến MEGAN, hứa hẹn một trận chiến 'nảy lửa' trên màn ảnh vào năm 2025. ",
+  trailer: " https://www.youtube.com/embed/TIlaeoIHOPo ",
+  genre: "Horror, Thriller, Fiction",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "34",
+  title: " Thế Giới Khủng Long: Tái Sinh ",
+  image: "images/image35.jpg",
+  duration: 0,
+  date: "2025-07-04",
+  country: "Mỹ",
+  producer: " Universal Pictures ",
+  director: "Gareth Edwards ",
+  cast: "Scarlett Johansson, Mahershala Ali, Jonathan Bailey ",
+  description: " Phim mới Jurassic World: Rebirth / Thế Giới Khủng Long: Tái Sinh mở ra một chương mới đầy tính hành động, chứng kiến một đội khai thác chạy đua đến nơi nguy hiểm nhất trên Trái Đất. Dàn nhân vật chính là bộ ba Scarlett Johansson, Mahershala Ali và Jonathan Bailey dấn thân vào một nhiệm vụ cực kỳ hiểm nguy, đó chính là cố gắng lấy DNA có thể dẫn đến một bước đột phá y học cho nhân loại. Chìa khóa của nó tình cờ lại là DNA của ba con khủng long khổng lồ nhất trên cạn, biển và không trung trong sinh quyển nhiệt đới. Hành trình này sẽ đưa nhóm nhân vật chính băng rừng, vượt biển, đối mặt với nhiều loài khủng long kỳ lạ, nguy hiểm nhưng cũng đầy lý thú, từ đó hé mở nhiều điều bí ẩn mà tạo hóa đã giấu khỏi con người suốt bấy lâu nay. ",
+  trailer: " https://www.youtube.com/embed/1QuSTIrvfL0 ",
+  genre: "Action, Adventure, Fiction",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "35",
+  title: " Superman ",
+  image: "images/image36.jpg",
+  duration: 0,
+  date: "2025-07-11",
+  country: "Mỹ",
+  producer: "DC Comics,, Warner Bros ",
+  director: " James Gunn ",
+  cast: "David Corenswet, Rachel Brosnahan, Nicholas Hoult ",
+  description: " Mùa hè tới đây, Warner Bros. Pictures sẽ mang “Superman” - phim điện ảnh đầu tiên của DC Studios đến các rạp chiếu trên toàn cầu. Với phong cách riêng biệt của mình, James Gunn sẽ khắc họa người hùng huyền thoại trong vũ trụ DC hoàn toàn mới, với sự kết hợp độc đáo của các yếu tố hành động đỉnh cao, hài hước và vô cùng cảm xúc. Một Superman với lòng trắc ẩn và niềm tin vào sự thiện lương của con người sẽ xuất hiện đầy hứa hẹn trên màn ảnh. ",
+  trailer: " https://www.youtube.com/embed/QZbk3DtUpt0 ",
+  genre: "Action, Fiction",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "36",
+  title: " Phim Xì Trum ",
+  image: "images/image37.jpg",
+  duration: 0,
+  date: "2025-07-18",
+  country: "Mỹ",
+  producer: "Paramount Pictures ",
+  director: " Chris Miller ",
+  cast: "Rihanna, James Corden, Nick Offerman ",
+  description: " The Smurfs Movie / Phim Xì Trum kể câu chuyện về ngôi làng Xì Trum, nơi mà mỗi ngày đều là lễ hội. Bỗng một ngày, sự yên bình của ngôi làng bị phá vỡ khi Tí Vua bị bắt cóc một cách bí ẩn bởi hai phù thủy độc ác Gà Mên và Cà Mên. Từ đây, Tí Cô Nương phải dẫn dắt các Tí đi vào thế giới thực để giải cứu ông. Với sự giúp đỡ của những người bạn mới, các Tí sẽ bước vào cuộc phiêu lưu khám phá định mệnh của mình để cứu lấy vũ trụ. ",
+  trailer: " https://www.youtube.com/embed/LoB7btq9Bpo ",
+  genre: "Family, Comedy",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "37",
+  title: " Bộ Tứ Siêu Đẳng: Bước Đi Đầu Tiên ",
+  image: "images/image38.jpg",
+  duration: 0,
+  date: "2025-07-25",
+  country: "Mỹ",
+  producer: " Marvel Studios ",
+  director: "Matt Shakman ",
+  cast: " Pedro Pascal, Vanessa Kirby, Joseph Quinn, Ebon Moss-Bachrach ",
+  description: " The Fantastic Four: First Steps / Bộ Tứ Siêu Đẳng: Bước Đi Đầu Tiên kể về một gia đình của Marvel đối mặt với thử thách khó khăn, họ vừa phải cân bằng vai trò là anh hùng với sức mạnh của mối quan hệ gia đình, vừa phải bảo vệ Trái đất khỏi một vị thần không gian hung dữ tên là Galactus và sứ giả của hắn, Silver Surfer. ",
+  trailer: " https://www.youtube.com/embed/c5JQQzRnVyo ",
+  genre: "Fiction, Action, Adventure",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "38",
+  title: " Họng Súng Vô Hình ",
+  image: "images/image39.jpg",
+  duration: 0,
+  date: "2025-08-01",
+  country: "Mỹ",
+  producer: "uk",
+  director: "Akiva Schaffer ",
+  cast: "uk",
+  description: " Phim mới The Naked Gun/ Họng Súng Vô Hình là phim hài lấy đề tài cảnh sát do Liam Neeson đóng chính. The Naked Gun là loạt phim hài nhại kinh điển những , gắn liền với hình ảnh của huyền thoại làng hài Leslie Nielsen. Lần này, người hùng của Taken – Liam Neeson sẽ có màn phá cách siêu bất ngờ khi hóa thân thành tay cảnh sát siêu hài hước  Frank Drebin Jr. ",
+  trailer: "link",
+  genre: "Action, Comedy",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "39",
+  title: " Băng Đảng Quái Kiệt 2 ",
+  image: "images/image40.jpg",
+  duration: 0,
+  date: "2025-08-01",
+  country: "Mỹ",
+  producer: " DreamWorks Animation, DreamWorks ",
+  director: "Pierre Perifel ",
+  cast: " Sam Rockwell, Marc Maron, Zazie Beetz ",
+  description: " Biệt đội Bad Guys đang cố gắng lấy lại sự tin tưởng của mọi người sau khi hoàn lương, nhưng mọi nỗ lực sụp đổ khi họ bị kéo vào 'phi vụ cuối cùng' do nhóm Bad Girls cầm đầu. Liệu họ sẽ giữ vững lý tưởng chính nghĩa, hay lại bị cuốn vào con đường tội phạm đã từng cố gắng rời bỏ? ",
+  trailer: " https://www.youtube.com/embed/U1ymwWPC0as ",
+  genre: "Animated, Comedy, Adventure",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "40",
+  title: " Ngày Thứ Sáu Siêu Kỳ Quái ",
+  image: "images/image41.jpg",
+  duration: 0,
+  date: "2025-MM-DD",
+  country: "Mỹ",
+  producer: "Walt Disney Pictures ",
+  director: "Nisha Ganatra ",
+  cast: "uk",
+  description: " Cặp mẹ con trong siêu phẩm phim teen đình đám – Jamie Lee Curtis và Lindsay Lohan trở lại trong phim mới Freakier Friday/ Ngày Thứ Sáu Siêu Kỳ Quái! Năm 2003, Freaky Friday do Mark Waters làm đạo diễn cùng đôi diễn viên đình đám Jamie Lee Curtis và Lindsay Lohan đã gây sốt phòng vé toàn cầu, trở thành tác phẩm huyền thoại cho dòng phim dành cho tuổi mới lớn. Sau hơn hai mươi năm, Freakier Friday sẽ trở lại với phiên bản điên hơn, loạn hơn và hài hước hơn. ",
+  trailer: " https://www.youtube.com/embed/hGMUHlS_hok ",
+  genre: "Family",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "41",
+  title: " Thanh Gươm Diệt Quỷ: Vô Hạn Thành ",
+  image: "images/image42.jpg",
+  duration: 0,
+  date: "2025-08-15",
+  country: "Nhật Bản",
+  producer: "ufotable ",
+  director: "Sotozaki Haruo ",
+  cast: " Hanae Natsuki, Matsuoka Yoshitsugu, Kito Akari, Shimono Hiro ",
+  description: " Phim mới Thanh Gươm Diệt Quỷ: Vô Hạn Thành là phần đầu tiên diễn ra khi trận chiến cuối cùng giữa Sát Quỷ Đoàn cùng Muzan và bè lũ bùng nổ tại Vô Hạn Thành. Kamado Tanjiro gia nhập Sát Quỷ Đoàn sau khi em gái Nezuko bị biến thành quỷ. Trong quá trình trưởng thành, Tanjiro đã chiến đấu với nhiều con quỷ cùng với các đồng đội Agatsuma Zenitsu và Hashibira Inosuke. Hành trình đưa cậu đến với cuộc chiến cùng những kiếm sĩ cấp cao nhất của Sát Quỷ Đoàn - các Trụ Cột - gồm Viêm Trụ Rengoku Kyojuro trên Chuyến Tàu Vô Tận, Âm Trụ Uzui Tengen tại Kỹ Viện Trấn, cũng như Hà Trụ Tokito Muichiro và Luyến Trụ Kanroji Mitsuri tại Làng Thợ Rèn. Khi các thành viên của Sát Quỷ Đoàn và Trụ Cột tham gia vào chương trình đặc huấn để chuẩn bị cho trận chiến sắp với lũ quỷ, Kibutsuji Muzan xuất hiện tại Dinh thự Ubuyashiki. Khi thủ lĩnh của Sát Quỷ Đoàn gặp nguy hiểm, Tanjiro và các Trụ Cột trở về trụ sở Thế nhưng, Muzan bất ngờ kéo toàn bộ Sát Quỷ Đoàn đến hang ổ cuối cùng của lũ quỷ là Vô Hạn Thành, mở màn cho trận đánh cuối cùng của cả hai phe. ",
+  trailer: " https://www.youtube.com/embed/U0eSjZtRq8o ",
+  genre: "Anmated",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+},
+{
+  id: "42",
+  title: " The Conjuring: Nghi Lễ Cuối Cùng ",
+  image: "images/image43.jpg",
+  duration: 0,
+  date: "2025-09-05",
+  country: "Mỹ",
+  producer: " New Line Cinema,, Warner Bros ",
+  director: " Michael Chaves ",
+  cast: " Vera Farmiga, Patrick Wilson, Madison Lawlor ",
+  description: " Cuộc phiêu lưu cuối cùng của nhà Warren. ",
+  trailer: " https://www.youtube.com/embed/R6zHFk1LlXw ",
+  genre: "Horror",
+  showtimes: ["00:00"],
+  status: "sapChieu"
+}
+
 ];
 
 const cinemas = ["Rạp Galaxy", "Rạp BHD", "Rạp Lotte Cinema", "Rạp CGV"];
@@ -244,26 +714,6 @@ movieSelect.addEventListener("change", () => {
 cinemaSelect.addEventListener("change", () => {
   const selectedMovieId = movieSelect.value;
   const selectedMovie = movies.find(movie => movie.id === selectedMovieId);
-  if (!selectedMovie) {
-  detailsDiv.style.display = "none";
-  cinemaSelect.disabled = true;
-  return;
-}
-
-// Hiển thị thông tin chi tiết phim
-titleEl.textContent = selectedMovie.title;
-imageEl.src = selectedMovie.image;
-durationEl.textContent = selectedMovie.duration;
-dateEl.textContent = selectedMovie.date;
-countryEl.textContent = selectedMovie.country;
-directorEl.textContent = selectedMovie.director;
-castEl.textContent = selectedMovie.cast;
-genreEl.textContent = selectedMovie.genre;
-descEl.textContent = selectedMovie.description;
-trailerEl.src = selectedMovie.trailer;
-
-detailsDiv.style.display = "block";
-
 
   timeSelect.innerHTML = '<option value="">-- Chọn suất chiếu --</option>';
   timeSelect.disabled = true;

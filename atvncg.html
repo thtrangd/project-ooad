@@ -8,9 +8,89 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .atvncg-container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .atvncg-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #fff;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      color: #000;
+      border: 1px solid #ddd;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+
+    .product-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      color: #ff6600;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .product-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .product-buttons button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .buy-now {
+      background-color: #ff6600;
+      color: white;
+    }
+
+    .add-cart {
+      background-color: white;
+      color: #ff6600;
+      border: 1px solid #ff6600;
+    }
+  </style>
 </head>
 
 <body>
@@ -55,38 +135,70 @@
     </section>
 
     <!-- NỘI DUNG SẢN PHẨM -->
-    <section class="movies-container atvncg-products">
-      <div class="box">
-        <img src="images/atvncg1.png" alt="Voucher" />
-        <h3>ATVNCG The Movie - Premiere E-Voucher</h3>
-        <span>220.000 ₫</span>
+    <div class="atvncg-container">
+      <h1 class="atvncg-title">Sản phẩm ATVNCG</h1>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="images/atvncg1.jpg" alt="Voucher" />
+          <div class="product-title">ATVNCG The Movie - Premiere E-Voucher</div>
+          <div class="product-price">220.000 ₫</div>
+          <div class="product-buttons">
+            <button class="buy-now">Mua ngay</button>
+            <button class="add-cart">Thêm vào giỏ</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/atvncg2.jpg" alt="Lightstick" />
+          <div class="product-title">ATVNCG - Khiên Lửa Lightstick Set</div>
+          <div class="product-price">600.000 ₫</div>
+          <div class="product-buttons">
+            <button class="buy-now">Mua ngay</button>
+            <button class="add-cart">Thêm vào giỏ</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/atvncg3.jpg" alt="Kakachain" />
+          <div class="product-title">ATVNCG - Blindbox Kakachain</div>
+          <div class="product-price">150.000 ₫</div>
+          <div class="product-buttons">
+            <button class="buy-now">Mua ngay</button>
+            <button class="add-cart">Thêm vào giỏ</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/atvncg4.jpg" alt="6 hộp" />
+          <div class="product-title">ATVNCG - Blindbox Kakadoll Ver.2 (6 hộp)</div>
+          <div class="product-price">1.800.000 ₫</div>
+          <div class="product-buttons">
+            <button class="buy-now">Mua ngay</button>
+            <button class="add-cart">Thêm vào giỏ</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/atvncg5.jpg" alt="Kakadoll" />
+          <div class="product-title">ATVNCG - Blindbox Kakadoll Ver.2</div>
+          <div class="product-price">300.000 ₫</div>
+          <div class="product-buttons">
+            <button class="buy-now">Mua ngay</button>
+            <button class="add-cart">Thêm vào giỏ</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/atvncg6.jpg" alt="Card" />
+          <div class="product-title">ATVNCG - Card bo góc Anh Tài (Set 5)</div>
+          <div class="product-price">100.000 ₫</div>
+          <div class="product-buttons">
+            <button class="buy-now">Mua ngay</button>
+            <button class="add-cart">Thêm vào giỏ</button>
+          </div>
+        </div>
       </div>
-      <div class="box">
-        <img src="images/atvncg2.png" alt="Lightstick" />
-        <h3>ATVNCG - Khiên Lửa Lightstick Set</h3>
-        <span>600.000 ₫</span>
-      </div>
-      <div class="box">
-        <img src="images/atvncg3.png" alt="Kakachain" />
-        <h3>ATVNCG - Blindbox Kakachain</h3>
-        <span>150.000 ₫</span>
-      </div>
-      <div class="box">
-        <img src="images/atvncg4.png" alt="6 hộp" />
-        <h3>ATVNCG - Blindbox Kakadoll Ver.2 (6 hộp)</h3>
-        <span>1.800.000 ₫</span>
-      </div>
-      <div class="box">
-        <img src="images/atvncg5.png" alt="Kakadoll" />
-        <h3>ATVNCG - Blindbox Kakadoll Ver.2</h3>
-        <span>300.000 ₫</span>
-      </div>
-      <div class="box">
-        <img src="images/atvncg6.png" alt="Card" />
-        <h3>ATVNCG - Card bo góc Anh Tài (Set 5)</h3>
-        <span>100.000 ₫</span>
-      </div>
-    </section>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
