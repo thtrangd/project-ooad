@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -37,16 +38,15 @@
       gap: 30px;
     }
 
-.product-card {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s;
-  color: #000;
-  border: 1px solid #ddd;
-}
-
+    .product-card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s;
+      color: #000;
+      border: 1px solid #ddd;
+    }
 
     .product-card:hover {
       transform: scale(1.05);
@@ -100,100 +100,177 @@
   </style>
 </head>
 <body>
-  <div class="hero-container">
-    <!-- Header -->
-    <section class="header">
-      <nav>
-        <a href="index.html"><img src="images/logo.png" alt="Bot Cinema Logo" /></a>
-        <div class="nav-links">
-          <ul>
-            <li><a href="movies.html">PHIM</a></li>
-            <li><a href="special-offers.html">ƯU ĐÃI</a></li>
-            <li class="dropdown-hover">
-              <a href="javascript:void(0);">SẢN PHẨM</a>
-              <ul class="dropdown-menu">
-                <li><a href="atvncg.html">ANH TRAI VƯỢT NGÀN CHÔNG GAI</a></li>
-                <li><a href="merch.html">GALAXY MERCH</a></li>
-              </ul>
-            </li>
-            <li class="dropdown-hover">
-              <a href="javascript:void(0);">QUYỀN LỢI</a>
-              <ul class="dropdown-menu">
-                <li><a href="the-le.html">THỂ LỆ</a></li>
-                <li><a href="benefits.html">QUYỀN LỢI</a></li>
-                <li><a href="huong-dan.html">HƯỚNG DẪN</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </section>
+<!-- ICON GIỎ HÀNG -->
+<div id="cart-icon" style="position: fixed; top: 20px; right: 20px; z-index: 9999; cursor: pointer; background: white; padding: 8px; border-radius: 50%; box-shadow: 0 0 8px rgba(0,0,0,0.2);">
+  <img src="images/cart.png" alt="Cart" width="30" height="30" />
+</div>
 
-    <!-- Banner (giống trang index) -->
-    <section class="home swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="images/home1.jpg" alt="Slide 1" />
-          <div class="home-text">
-            <span>Marvel Universe</span>
-            <h1>Guardians of the Galaxy <br /> Volume</h1>
-            <a href="#" class="btn">Book Now</a>
-          </div>
+<!-- PANEL GIỎ HÀNG -->
+<div id="cart-panel" style="display: none; position: fixed; top: 70px; right: 20px; width: 320px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.4); padding: 20px; z-index: 9999;">
+  <h3>🛒 Giỏ hàng</h3>
+  <div id="cart-items-preview"></div>
+  <p><strong>Tổng tiền:</strong> <span id="cart-total-preview">0 ₫</span></p>
+  <hr />
+  <div id="user-info-preview" style="font-size: 0.9rem;"></div>
+  <div style="text-align: right; margin-top: 10px;">
+    <a href="cart.html" style="text-decoration: none; color: white; background: #b55c00; padding: 8px 12px; border-radius: 6px;">Xem giỏ hàng</a>
+  </div>
+</div>
+
+<div class="hero-container">
+  <!-- Header -->
+  <section class="header">
+    <nav>
+      <a href="index.html"><img src="images/logo.png" alt="Bot Cinema Logo" /></a>
+      <div class="nav-links">
+        <ul>
+          <li><a href="movies.html">PHIM</a></li>
+          <li><a href="special-offers.html">ƯU ĐÃI</a></li>
+          <li class="dropdown-hover">
+            <a href="javascript:void(0);">SẢN PHẨM</a>
+            <ul class="dropdown-menu">
+              <li><a href="atvncg.html">ANH TRAI VƯỢT NGÀN CHÔNG GAI</a></li>
+              <li><a href="merch.html">GALAXY MERCH</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-hover">
+            <a href="javascript:void(0);">QUYỀN LỢI</a>
+            <ul class="dropdown-menu">
+              <li><a href="the-le.html">THỂ LỆ</a></li>
+              <li><a href="benefits.html">QUYỀN LỢI</a></li>
+              <li><a href="huong-dan.html">HƯỚNG DẪN</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+
+  <!-- Banner -->
+  <section class="home swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="images/home1.jpg" alt="Slide 1" />
+        <div class="home-text">
+          <span>Marvel Universe</span>
+          <h1>Guardians of the Galaxy <br /> Volume</h1>
+          <a href="#" class="btn">Book Now</a>
         </div>
-        <div class="swiper-slide">
-          <img src="images/home2.jpg" alt="Slide 2" />
-          <div class="home-text">
-            <span>DC World</span>
-            <h1>The Flash <br /> Returns</h1>
-            <a href="#" class="btn">Book Now</a>
-          </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="images/home2.jpg" alt="Slide 2" />
+        <div class="home-text">
+          <span>DC World</span>
+          <h1>The Flash <br /> Returns</h1>
+          <a href="#" class="btn">Book Now</a>
         </div>
-        <div class="swiper-slide">
-          <img src="images/home3.jpg" alt="Slide 3" />
-          <div class="home-text">
-            <span>Animation</span>
-            <h1>Inside Out 2 <br /> Coming Soon</h1>
-            <a href="#" class="btn">Book Now</a>
-          </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="images/home3.jpg" alt="Slide 3" />
+        <div class="home-text">
+          <span>Animation</span>
+          <h1>Inside Out 2 <br /> Coming Soon</h1>
+          <a href="#" class="btn">Book Now</a>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </section>
+
+  <!-- Merch Grid -->
+  <div class="merch-container">
+    <h1 class="merch-title">Galaxy Merch</h1>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="images/merch1.jpg" alt="Ly nước Capybara">
+        <div class="product-title">Ly nước Capybara</div>
+        <div class="product-price">350.000 ₫</div>
+        <div class="product-buttons">
+          <button class="buy-now">Mua ngay</button>
+          <button class="add-cart">Thêm vào giỏ</button>
         </div>
       </div>
 
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </section>
-
-    <!-- Merch Grid -->
-    <div class="merch-container">
-      <h1 class="merch-title">Galaxy Merch</h1>
-      <div class="product-grid">
-        <div class="product-card">
-          <img src="images/merch1.jpg" alt="Ly nước Capybara">
-          <div class="product-title">Ly nước Capybara</div>
-          <div class="product-price">350.000 ₫</div>
-          <div class="product-buttons">
-            <button class="buy-now">Mua ngay</button>
-            <button class="add-cart">Thêm vào giỏ</button>
-          </div>
+      <div class="product-card">
+        <img src="images/merch2.jpg" alt="Ống hút Marvel">
+        <div class="product-title">Ống hút Marvel</div>
+        <div class="product-price">120.000 ₫</div>
+        <div class="product-buttons">
+          <button class="buy-now">Mua ngay</button>
+          <button class="add-cart">Thêm vào giỏ</button>
         </div>
-
-        <div class="product-card">
-          <img src="images/merch2.jpg" alt="Ống hút Marvel">
-          <div class="product-title">Ống hút Marvel</div>
-          <div class="product-price">120.000 ₫</div>
-          <div class="product-buttons">
-            <button class="buy-now">Mua ngay</button>
-            <button class="add-cart">Thêm vào giỏ</button>
-          </div>
-        </div>
-
-        <!-- Thêm sản phẩm khác tại đây nếu muốn -->
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="main.js"></script>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="main.js"></script>
+<script>
+  document.querySelectorAll(".buy-now").forEach((button) => {
+    button.addEventListener("click", function () {
+      const card = this.closest(".product-card");
+      const img = card.querySelector("img").getAttribute("src");
+      const name = card.querySelector(".product-title").textContent;
+      const price = card.querySelector(".product-price").textContent;
+
+      const url = `merch-booking.html?image=${encodeURIComponent(img)}&name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}`;
+      window.location.href = url;
+    });
+  });
+
+  document.querySelectorAll(".add-cart").forEach((button) => {
+    button.addEventListener("click", function () {
+      const card = this.closest(".product-card");
+      const image = card.querySelector("img").getAttribute("src");
+      const name = card.querySelector(".product-title").textContent;
+      const price = card.querySelector(".product-price").textContent;
+
+      const url = `cart.html?image=${encodeURIComponent(image)}&name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}`;
+      window.location.href = url;
+    });
+  });
+
+  const cartIcon = document.getElementById("cart-icon");
+  const cartPanel = document.getElementById("cart-panel");
+  const cartItemsPreview = document.getElementById("cart-items-preview");
+  const cartTotalPreview = document.getElementById("cart-total-preview");
+  const userInfoPreview = document.getElementById("user-info-preview");
+
+  cartIcon.addEventListener("click", () => {
+    if (cartPanel.style.display === "none") {
+      showCartPanel();
+    } else {
+      cartPanel.style.display = "none";
+    }
+  });
+
+  function showCartPanel() {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cartItemsPreview.innerHTML = "";
+    let total = 0;
+    cart.forEach(item => {
+      cartItemsPreview.innerHTML += `
+        <div style="margin-bottom: 8px;">
+          <strong>${item.name}</strong><br />
+          <span style="color:#ff6600">${item.price}</span>
+        </div>`;
+      total += parseInt(item.price.replace(/[^\d]/g, ""));
+    });
+    cartTotalPreview.textContent = `${total.toLocaleString()} ₫`;
+
+    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
+    userInfoPreview.innerHTML = userInfo.fullname ? `
+      <p><strong>👤 ${userInfo.fullname}</strong><br />
+      📧 ${userInfo.email}<br />
+      📱 ${userInfo.phone}<br />
+      🏠 ${userInfo.address}</p>` : `<em>Chưa có thông tin người nhận</em>`;
+
+    cartPanel.style.display = "block";
+  }
+</script>
 </body>
 </html>
