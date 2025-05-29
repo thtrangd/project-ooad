@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chi tiết ưu đãi - Bot Cinema</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: 'Marmelad', sans-serif;
+      color: #3b1f05;
+      min-height: 100vh;
+      background-image: linear-gradient(rgba(243, 217, 191, 0.7), rgba(42, 21, 1, 0.85)), url('images/banner.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .offer-detail-container {
+      background-color: #fff9ec;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    #back-btn {
+      background-color: #3b1f05;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    #back-btn:hover {
+      background-color: #b55c00;
+    }
+
+    #offer-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #b55c00;
+      margin-bottom: 30px;
+    }
+
+    .offer-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 30px;
+      margin-bottom: 30px;
+      justify-content: center;
+    }
+
+    #offer-image {
+      width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(181, 92, 0, 0.25);
+    }
+
+    .offer-info {
+      flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .offer-info p {
+      margin: 6px 0;
+    }
+
+    h2 {
+      color: #b55c00;
+      margin-top: 20px;
+    }
+
+    #offer-description {
+      font-size: 1.1rem;
+      line-height: 1.65;
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="offer-detail-container">
+    <button id="back-btn">← Quay lại</button>
+
+    <h1 id="offer-title"></h1>
+
+    <div class="offer-header">
+      <img id="offer-image" src="" alt="Ảnh ưu đãi" />
+      <div class="offer-info">
+        <p><strong>Thời gian:</strong> <span id="offer-time"></span></p>
+        <p><strong>Thể lệ:</strong> <span id="offer-rule"></span></p>
+        <p><strong>Cách hoạt động:</strong> <span id="offer-function"></span></p>
+      </div>
+    </div>
+
+    <h2>Mô tả</h2>
+    <p id="offer-description"></p>
+  </div>
+
+  <script src="special-offer-data.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+    const offer = specialOffers.find(o => o.id === id);
+    const container = document.querySelector('.offer-detail-container');
+
+    if (offer) {
+      document.getElementById("offer-title").textContent = offer.title;
+      document.getElementById("offer-image").src = offer.image;
+      document.getElementById("offer-image").alt = offer.title;
+      document.getElementById("offer-time").textContent = offer.time;
+      document.getElementById("offer-rule").textContent = offer.rule;
+      document.getElementById("offer-function").textContent = offer.function;
+      document.getElementById("offer-description").textContent = offer.description;
+    } else {
+      container.innerHTML = '<p>Không tìm thấy ưu đãi.</p>';
+    }
+
+    document.getElementById("back-btn").onclick = () => {
+      window.history.back();
+    };
+  </script>
+
+</body>
+</html>
