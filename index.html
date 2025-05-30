@@ -94,25 +94,12 @@
         <select id="time" disabled>
           <option value="">-- Chọn suất chiếu --</option>
         </select>
-        <div id="movie-details" style="display:none;">
-  <h2 id="movie-title"></h2>
-  <img id="movie-image" src="" alt="Movie Image" style="width: 200px;">
-  <p><strong>Thời lượng:</strong> <span id="movie-duration"></span> phút</p>
-  <p><strong>Ngày khởi chiếu:</strong> <span id="movie-date"></span></p>
-  <p><strong>Quốc gia:</strong> <span id="movie-country"></span></p>
-  <p><strong>Đạo diễn:</strong> <span id="movie-director"></span></p>
-  <p><strong>Diễn viên:</strong> <span id="movie-cast"></span></p>
-  <p><strong>Thể loại:</strong> <span id="movie-genre"></span></p>
-  <p><strong>Mô tả:</strong> <span id="movie-description"></span></p>
-  <iframe id="movie-trailer" width="420" height="315" frameborder="0" allowfullscreen></iframe>
-</div>
-
       </div>
 
       <button class="btn book-btn">Mua Vé Nhanh</button>
     </section>
 
-    <section class="movies-container"></section>
+    <section class="movies-container" id="now-playing-section"></section>
   </div>
 
   <div id="signin-modal" class="modal">
@@ -120,14 +107,14 @@
       <span class="close-button">&times;</span>
       <img src="images/login.png" alt="Login illustration" class="login-img" />
       <h2>Đăng Nhập Tài Khoản</h2>
-      <form>
+      <form id="signin-form" method="POST" action="/signin">
         <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Nhập Email" required />
+        <input type="email" id="email" name="email" placeholder="Nhập Email" required />
 
         <label for="password">Mật khẩu</label>
         <div class="password-wrapper">
-          <input type="password" id="password" placeholder="Nhập Mật khẩu" required />
-          <span class="toggle-password">👁️</span>
+          <input type="password" id="password" name="password" placeholder="Nhập Mật khẩu" required />
+          <span class="toggle-password" style="cursor:pointer;">👁️</span>
         </div>
 
         <button type="submit" class="btn-primary">ĐĂNG NHẬP</button>
@@ -140,17 +127,17 @@
 
         <div class="form-footer">
           <p>Bạn chưa có tài khoản?</p>
-          <button type="button" class="btn-outline">Đăng ký</button>
+          <a href="signup.html" class="btn-outline">Đăng ký</a>
         </div>
+
       </form>
     </div>
   </div>
 
-  <!-- Load dữ liệu phim -->
   <script src="movie-data.js"></script>
 
-  <!-- Hiển thị danh sách phim -->
   <script>
+    // Hiển thị danh sách phim chung
     const container = document.querySelector(".movies-container");
 
     movies.forEach(movie => {
@@ -162,14 +149,13 @@
             <img src="${movie.image}" alt="${movie.title}" />
           </div>
           <h3>${movie.title}</h3>
-          <span>${movie.subtitle}</span>
+          <span>${movie.date}</span>
         </a>
       `;
       container.appendChild(box);
     });
   </script>
 
-  <!-- Tự động load danh sách phim + rạp + suất chiếu -->
   <script>
     const movieSelect = document.getElementById("movie");
     const cinemaSelect = document.getElementById("cinema");
@@ -233,7 +219,7 @@
       });
 
       timeSelect.disabled = false;
-      dateInput.disabled = false; // Mở khóa chọn ngày khi chọn rạp
+      dateInput.disabled = false;
     });
 
     window.addEventListener("DOMContentLoaded", () => {
@@ -246,5 +232,38 @@
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="main.js"></script>
+
+  <script>
+    // Modal logic for sign in
+    const signinModal = document.getElementById('signin-modal');
+    const openSigninBtn = document.getElementById('open-signin');
+    const closeBtn = signinModal.querySelector('.close-button');
+
+    openSigninBtn.onclick = () => {
+      signinModal.style.display = 'block';
+    };
+    closeBtn.onclick = () => {
+      signinModal.style.display = 'none';
+    };
+    window.onclick = event => {
+      if (event.target === signinModal) {
+        signinModal.style.display = 'none';
+      }
+    };
+
+    // Password toggle
+    const togglePassword = document.querySelector('.toggle-password');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', () => {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        togglePassword.textContent = '🙈';
+      } else {
+        passwordInput.type = 'password';
+        togglePassword.textContent = '👁️';
+      }
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giỏ Hàng - Bot Cinema</title>
+  <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Marmelad', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-image: linear-gradient(rgba(243, 217, 191, 0.7), rgba(42, 21, 1, 0.7)), url(images/banner.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cart-container {
+      width: 90%;
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      text-align: center;
+      color: #b55c00;
+      margin-bottom: 20px;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 15px;
+    }
+    .cart-item-details {
+      flex-grow: 1;
+    }
+    .cart-item-details h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+    .cart-item-details p {
+      margin: 3px 0;
+      color: #ff6600;
+    }
+    .remove-btn {
+      background: none;
+      border: none;
+      color: red;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    #total {
+      font-weight: bold;
+      text-align: right;
+      margin-top: 10px;
+      color: #5a2b00;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #5a2b00;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 14px;
+      background-color: #b55c00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #8a4300;
+    }
+    #success-message {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #28a745;
+      color: white;
+      border-radius: 6px;
+      display: none;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="cart-container">
+    <h1>Giỏ Hàng</h1>
+    <!-- Nút quay lại để tiếp tục mua sắm -->
+    <div style="text-align: right; margin-bottom: 20px;">
+  <a href="atvncg.html" style="color: #b55c00; text-decoration: none;">← Tiếp tục mua sắm</a>
+</div>
+
+    <div id="cart-items"></div>
+    <div id="total">Tổng tiền: 0 ₫</div>
+
+    <form id="checkout-form">
+      <label for="fullname">Họ tên:</label>
+      <input type="text" id="fullname" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+
+      <label for="phone">Số điện thoại:</label>
+      <input type="tel" id="phone" required pattern="[0-9]{10,11}" />
+
+      <label for="address">Địa chỉ:</label>
+      <input type="text" id="address" required />
+
+      <button type="submit">Xác nhận đơn hàng</button>
+    </form>
+
+    <div id="success-message">✅ Đặt hàng thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.</div>
+  </div>
+
+  <script>
+    const cartContainer = document.getElementById("cart-items");
+    const totalDisplay = document.getElementById("total");
+
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      cartContainer.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "cart-item";
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="sản phẩm">
+          <div class="cart-item-details">
+            <h3>${item.name}</h3>
+            <p>${item.price}</p>
+          </div>
+          <button class="remove-btn" data-index="${index}">Xóa</button>
+        `;
+        cartContainer.appendChild(itemDiv);
+
+        total += parseInt(item.price.replace(/[^\d]/g, ""));
+      });
+
+      totalDisplay.textContent = `Tổng tiền: ${total.toLocaleString()} ₫`;
+
+      document.querySelectorAll(".remove-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const i = this.getAttribute("data-index");
+          cart.splice(i, 1);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          loadCart();
+        });
+      });
+    }
+
+    loadCart();
+
+    // Nhận thêm sản phẩm nếu có trong URL
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("image")) {
+      const image = decodeURIComponent(params.get("image"));
+      const name = decodeURIComponent(params.get("name"));
+      const price = decodeURIComponent(params.get("price"));
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      cart.push({ image, name, price });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      window.location.href = "cart.html"; // Reload để không bị thêm trùng
+    }
+
+    // Submit đơn hàng
+    document.getElementById("checkout-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      if (cart.length === 0) {
+        alert("Giỏ hàng đang trống!");
+        return;
+      }
+      this.reset();
+      localStorage.removeItem("cart");
+      
+      //Hiển thị thông tin cá nhân cho cart 
+      const userInfo = {
+  fullname: document.getElementById("fullname").value,
+  email: document.getElementById("email").value,
+  phone: document.getElementById("phone").value,
+  address: document.getElementById("address").value
+};
+localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+      loadCart();
+      document.getElementById("success-message").style.display = "block";
+    });
+  </script>
+</body>
+</html>

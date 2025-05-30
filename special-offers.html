@@ -2,13 +2,12 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sự Kiện - Bot Cinema</title>
-  
+  <title>Promotions - Bot Cinema</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet" />
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -27,45 +26,49 @@
     <li><a href="merch.html">GALAXY MERCH</a></li>
   </ul>
 </li>
-<li class="dropdown-hover">
-  <a href="javascript:void(0);">QUYỀN LỢI</a>
-  <ul class="dropdown-menu">
-    <li><a href="the-le.html">THỂ LỆ</a></li>
-    <li><a href="benefits.html">QUYỀN LỢI</a></li>
-    <li><a href="huong-dan.html">HƯỚNG DẪN</a></li>
-  </ul>
-</li>
-
+            <li class="dropdown-hover">
+              <a href="javascript:void(0);">QUYỀN LỢI</a>
+              <ul class="dropdown-menu">
+                <li><a href="the-le.html">THỂ LỆ</a></li>
+                <li><a href="benefits.html">QUYỀN LỢI</a></li>
+                <li><a href="huong-dan.html">HƯỚNG DẪN</a></li>
+              </ul>
+            </li>
           </ul>
+        </div>
+        <div class="sign-in">
         </div>
       </nav>
     </section>
 
     <main style="padding: 20px; max-width: 1200px; margin: auto;">
-<div class="title-line">
-  <h1>ƯU ĐÃI</h1>
-</div>
-
-<div class="events-grid">
-  <img src="images/offer1.jpg" alt="Event 1">
-  <img src="images/offer2.jpg" alt="Event 2">
-  <img src="images/offer3.jpg" alt="Event 3">
-  <img src="images/offer4.jpg" alt="Event 4">
-  <img src="images/offer5.jpg" alt="Event 5">
-  <img src="images/offer6.jpg" alt="Event 6">
-  <img src="images/offer7.jpg" alt="Event 7">
-  <img src="images/offer8.jpg" alt="Event 8">
-  <img src="images/offer9.jpg" alt="Event 9">
-  <img src="images/offer10.jpg" alt="Event 10">
-  <img src="images/offer11.jpg" alt="Event 11">
-  <img src="images/offer12.jpg" alt="Event 12">
-  <img src="images/offer13.jpg" alt="Event 13">
-
-</div>
-
-      </div>
+      <h1>ƯU ĐÃI</h1>
+      <div class="movies-list" id="offers-list"></div>
     </main>
   </div>
+
+  <script src="special-offer-data.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const offersContainer = document.getElementById("offers-list");
+  specialOffers.forEach(offer => {
+    const box = document.createElement("div");
+    box.className = "box";
+    box.style.cursor = "pointer";
+    box.innerHTML = `
+      <div class="box-img">
+        <img src="${offer.image}" alt="${offer.title}" />
+      </div>
+      <h3>${offer.title}</h3>
+      <span>${offer.time}</span>
+    `;
+    box.addEventListener("click", () => {
+      window.location.href = `special-offer-detail.html?id=${offer.id}`;
+    });
+    offersContainer.appendChild(box);
+  });
+});
+
+  </script>
 </body>
 </html>
-</div>

@@ -1,0 +1,142 @@
+<!-- product-booking.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đặt Mua Sản Phẩm - Bot Cinema</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Marmelad&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Marmelad', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-image: linear-gradient(rgba(243, 217, 191, 0.7), rgba(42, 21, 1, 0.7)), url(images/banner.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .booking-container {
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      text-align: center;
+      color: #b55c00;
+      margin-bottom: 30px;
+    }
+    .product-preview {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .product-preview img {
+      max-width: 200px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    .product-preview h2 {
+      margin: 5px 0;
+      font-size: 20px;
+      color: #5a2b00;
+    }
+    .product-preview p {
+      color: #ff6600;
+      font-size: 18px;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #5a2b00;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      font-size: 1rem;
+    }
+    input:focus {
+      outline: 2px solid #b55c00;
+    }
+    button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 14px;
+      background-color: #b55c00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #8a4300;
+    }
+    #success-message {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #28a745;
+      color: white;
+      border-radius: 6px;
+      display: none;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="booking-container">
+    <h1>Xác Nhận Đặt Mua</h1>
+
+    <div class="product-preview">
+      <img id="product-img" src="" alt="Sản phẩm" />
+      <h2 id="product-name">Đang tải...</h2>
+      <p id="product-price">0 ₫</p>
+    </div>
+
+    <form id="order-form">
+      <label for="fullname">Họ tên:</label>
+      <input type="text" id="fullname" placeholder="Nguyễn Văn A" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="example@email.com" required />
+
+      <label for="phone">Số điện thoại:</label>
+      <input type="tel" id="phone" placeholder="0123456789" required pattern="[0-9]{10,11}" />
+
+      <label for="address">Địa chỉ:</label>
+      <input type="text" id="address" placeholder="Số nhà, đường, quận/huyện, tỉnh/thành phố" required />
+
+      <button type="submit">Xác nhận đặt mua</button>
+    </form>
+
+    <div id="success-message">✅ Đặt mua thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.</div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("product-img").src = decodeURIComponent(params.get("image") || "");
+    document.getElementById("product-name").textContent = decodeURIComponent(params.get("name") || "Không rõ");
+    document.getElementById("product-price").textContent = decodeURIComponent(params.get("price") || "0 ₫");
+
+    document.getElementById("order-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("success-message").style.display = "block";
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
