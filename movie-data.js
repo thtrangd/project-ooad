@@ -681,7 +681,7 @@ const movies = [
 
 ];
 
-const cinemas = ["Rạp Galaxy", "Rạp BHD", "Rạp Lotte Cinema", "Rạp CGV"];
+const cinemas = ["Rạp Nguyễn Chí Thanh", "Rạp Phạm Văn Chí", "Rạp Quang Trung", "Rạp Mai Chí Thọ"];
 movies.forEach(movie => {
   const option = document.createElement("option");
   option.value = movie.id;

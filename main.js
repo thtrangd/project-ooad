@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const query = `?movie=${encodeURIComponent(movie)}&cinema=${encodeURIComponent(
       cinema
     )}&date=${date}&time=${time}`;
-    window.location.href = `booking.html${query}`;
+    window.location.href = `select-seats.html${query}`;
   });
 
   // Đặt ngày tối thiểu cho input date ngay từ đầu
@@ -76,3 +76,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const today = new Date().toISOString().split("T")[0];
   dateInput.min = today;
 });
+
+

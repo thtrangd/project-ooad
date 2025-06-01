@@ -663,3 +663,27 @@ nav img {
   font-size: 20px;
   cursor: pointer;
 }
+
+.seat-map {
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  gap: 5px;
+  margin-top: 10px;
+}
+.seat {
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.seat.selected {
+  background-color: #4CAF50;
+  color: white;
+}
+.seat.occupied {
+  background-color: #999;
+  cursor: not-allowed;
+}

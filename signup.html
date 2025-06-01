@@ -216,11 +216,11 @@
       };
 
       try {
-        console.log('Dữ liệu gửi lên server:', data);
-            const res = await fetch('http://127.0.0.1:3000/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        // Gửi dữ liệu lên server
+        const res = await fetch('http://127.0.0.1:3000/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
         });
 
         const result = await res.json();

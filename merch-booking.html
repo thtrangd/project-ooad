@@ -33,31 +33,13 @@
       color: #b55c00;
       margin-bottom: 30px;
     }
-    .product-preview {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .product-preview img {
-      max-width: 200px;
-      border-radius: 12px;
-      margin-bottom: 10px;
-    }
-    .product-preview h2 {
-      margin: 5px 0;
-      font-size: 20px;
-      color: #5a2b00;
-    }
-    .product-preview p {
-      color: #ff6600;
-      font-size: 18px;
-    }
     label {
       display: block;
       margin-top: 20px;
       font-weight: bold;
       color: #5a2b00;
     }
-    input {
+    input, select {
       width: 100%;
       padding: 10px;
       border-radius: 8px;
@@ -92,18 +74,30 @@
       display: none;
       text-align: center;
     }
+    #qr-code {
+      margin-top: 15px;
+      text-align: center;
+      display: none;
+    }
+    #qr-code img {
+      max-width: 200px;
+    }
+    .info-box {
+      margin-top: 20px;
+      background-color: #ffe6cc;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+    }
+    .info-box strong {
+      color: #8a4300;
+    }
   </style>
 </head>
 <body>
 
   <div class="booking-container">
     <h1>Xác Nhận Đặt Mua</h1>
-
-    <div class="product-preview">
-      <img id="product-img" src="" alt="Sản phẩm" />
-      <h2 id="product-name">Đang tải...</h2>
-      <p id="product-price">0 ₫</p>
-    </div>
 
     <form id="order-form">
       <label for="fullname">Họ tên:</label>
@@ -115,25 +109,56 @@
       <label for="phone">Số điện thoại:</label>
       <input type="tel" id="phone" placeholder="0123456789" required pattern="[0-9]{10,11}" />
 
-      <label for="address">Địa chỉ:</label>
-      <input type="text" id="address" placeholder="Số nhà, đường, quận/huyện, tỉnh/thành phố" required />
+      <label for="payment-method">Phương thức thanh toán:</label>
+      <select id="payment-method" required>
+        <option value="">-- Chọn phương thức --</option>
+        <option value="cash">Tiền mặt</option>
+        <option value="bank">Chuyển khoản</option>
+      </select>
 
-      <button type="submit">Xác nhận đặt mua</button>
+      <div id="qr-code">
+        <p>Vui lòng quét mã QR để chuyển khoản:</p>
+        <img src="images/qr-code.png" alt="QR Code Chuyển khoản">
+      </div>
+
+      <button type="submit">Hoàn thành</button>
     </form>
 
-    <div id="success-message">✅ Đặt mua thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.</div>
+    <div id="success-message">✅ Bạn giữ máy giúp Bot Cinema khoảng 5 phút nhé <3</div>
   </div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    document.getElementById("product-img").src = decodeURIComponent(params.get("image") || "");
-    document.getElementById("product-name").textContent = decodeURIComponent(params.get("name") || "Không rõ");
-    document.getElementById("product-price").textContent = decodeURIComponent(params.get("price") || "0 ₫");
+    // Hiển thị QR nếu chọn chuyển khoản
+    document.getElementById("payment-method").addEventListener("change", function () {
+      const qr = document.getElementById("qr-code");
+      if (this.value === "bank") {
+        qr.style.display = "block";
+      } else {
+        qr.style.display = "none";
+      }
+    });
 
+    // Lấy thông tin đặt vé
+    const bookingData = {
+      movie: localStorage.getItem("selectedMovie") || "-",
+      date: localStorage.getItem("selectedDate") || "-",
+      cinema: localStorage.getItem("selectedCinema") || "-",
+      time: localStorage.getItem("selectedTime") || "-",
+      seats: localStorage.getItem("selectedSeats") || "-"
+    };
+
+    document.getElementById("movie-name").textContent = bookingData.movie;
+    document.getElementById("cinema").textContent = bookingData.cinema;
+    document.getElementById("date").textContent = bookingData.date;
+    document.getElementById("time").textContent = bookingData.time;
+    document.getElementById("seats").textContent = bookingData.seats;
+
+    // Xử lý form
     document.getElementById("order-form").addEventListener("submit", function (e) {
       e.preventDefault();
       document.getElementById("success-message").style.display = "block";
       this.reset();
+      document.getElementById("qr-code").style.display = "none";
     });
   </script>
 
