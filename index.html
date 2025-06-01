@@ -227,7 +227,31 @@
       cinemaSelect.disabled = true;
       timeSelect.disabled = true;
       dateInput.disabled = true;
+      
     });
+document.querySelector(".book-btn").addEventListener("click", () => {
+  const movieId = document.getElementById("movie").value;
+  const cinema = document.getElementById("cinema").value;
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
+
+  if (!movieId || !cinema || !date || !time) {
+    alert("Vui lòng chọn đầy đủ thông tin!");
+    return;
+  }
+
+  const selectedMovie = movies.find(m => m.id === parseInt(movieId));
+  console.log("Đang lưu dữ liệu vào localStorage:", selectedMovie.title, cinema, date, time);
+
+  localStorage.setItem("selectedMovie", selectedMovie.title);
+  localStorage.setItem("selectedTheater", cinema);
+  localStorage.setItem("selectedDate", date);
+  localStorage.setItem("selectedTime", time);
+
+  window.location.href = "select-seats.html";
+});
+
+
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -265,5 +289,6 @@
       }
     });
   </script>
+
 </body>
 </html>
