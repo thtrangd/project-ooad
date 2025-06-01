@@ -99,7 +99,7 @@
       <button class="btn book-btn">Mua Vé Nhanh</button>
     </section>
 
-    <section class="movies-container"></section>
+    <section class="movies-container" id="now-playing-section"></section>
   </div>
 
   <div id="signin-modal" class="modal">
@@ -107,14 +107,14 @@
       <span class="close-button">&times;</span>
       <img src="images/login.png" alt="Login illustration" class="login-img" />
       <h2>Đăng Nhập Tài Khoản</h2>
-      <form>
+      <form id="signin-form" method="POST" action="/signin">
         <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Nhập Email" required />
+        <input type="email" id="email" name="email" placeholder="Nhập Email" required />
 
         <label for="password">Mật khẩu</label>
         <div class="password-wrapper">
-          <input type="password" id="password" placeholder="Nhập Mật khẩu" required />
-          <span class="toggle-password">👁️</span>
+          <input type="password" id="password" name="password" placeholder="Nhập Mật khẩu" required />
+          <span class="toggle-password" style="cursor:pointer;">👁️</span>
         </div>
 
         <button type="submit" class="btn-primary">ĐĂNG NHẬP</button>
@@ -127,17 +127,17 @@
 
         <div class="form-footer">
           <p>Bạn chưa có tài khoản?</p>
-          <button type="button" class="btn-outline">Đăng ký</button>
+          <a href="signup.html" class="btn-outline">Đăng ký</a>
         </div>
+
       </form>
     </div>
   </div>
 
-  <!-- Load dữ liệu phim -->
   <script src="movie-data.js"></script>
 
-  <!-- Hiển thị danh sách phim -->
   <script>
+    // Hiển thị danh sách phim chung
     const container = document.querySelector(".movies-container");
 
     movies.forEach(movie => {
@@ -156,7 +156,6 @@
     });
   </script>
 
-  <!-- Tự động load danh sách phim + rạp + suất chiếu -->
   <script>
     const movieSelect = document.getElementById("movie");
     const cinemaSelect = document.getElementById("cinema");
@@ -220,7 +219,7 @@
       });
 
       timeSelect.disabled = false;
-      dateInput.disabled = false; // Mở khóa chọn ngày khi chọn rạp
+      dateInput.disabled = false;
     });
 
     window.addEventListener("DOMContentLoaded", () => {
@@ -231,33 +230,40 @@
     });
   </script>
 
-  
-
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="main.js"></script>
 
-<!-- index.html (cập nhật) -->
-<section class="movies-container" id="now-playing-section"></section>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const container = document.getElementById("now-playing-section");
-    const nowShowing = movies.filter(m => m.status === "dangChieu");
-    nowShowing.forEach(movie => {
-      const box = document.createElement("div");
-      box.className = "box";
-      box.innerHTML = `
-        <a href="movie-detail.html?id=${movie.id}" class="movie-link">
-          <div class="box-img">
-            <img src="${movie.image}" alt="${movie.title}" />
-          </div>
-          <h3>${movie.title}</h3>
-          <span>${movie.date}</span>
-        </a>
-      `;
-      container.appendChild(box);
-    });
-  });
-</script>
+  <script>
+    // Modal logic for sign in
+    const signinModal = document.getElementById('signin-modal');
+    const openSigninBtn = document.getElementById('open-signin');
+    const closeBtn = signinModal.querySelector('.close-button');
 
+    openSigninBtn.onclick = () => {
+      signinModal.style.display = 'block';
+    };
+    closeBtn.onclick = () => {
+      signinModal.style.display = 'none';
+    };
+    window.onclick = event => {
+      if (event.target === signinModal) {
+        signinModal.style.display = 'none';
+      }
+    };
+
+    // Password toggle
+    const togglePassword = document.querySelector('.toggle-password');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', () => {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        togglePassword.textContent = '🙈';
+      } else {
+        passwordInput.type = 'password';
+        togglePassword.textContent = '👁️';
+      }
+    });
+  </script>
 </body>
 </html>
