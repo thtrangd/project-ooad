@@ -147,12 +147,6 @@
       seats: localStorage.getItem("selectedSeats") || "-"
     };
 
-    document.getElementById("movie-name").textContent = bookingData.movie;
-    document.getElementById("cinema").textContent = bookingData.cinema;
-    document.getElementById("date").textContent = bookingData.date;
-    document.getElementById("time").textContent = bookingData.time;
-    document.getElementById("seats").textContent = bookingData.seats;
-
     // Xử lý form
     document.getElementById("order-form").addEventListener("submit", function (e) {
       e.preventDefault();
